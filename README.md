@@ -5,7 +5,7 @@ The BitConnector is designed to represent a classic DIP chip in 2.54mm pitch wit
 Configurations that are present in an HDL/schematic are transmitted via JTAG and stored permanently on the CPLD.
 
 <center>
-![image info](./doc/Figures/BitConnector6P.png)
+![image info](doc/Figures/BitConnector6P.png)
 </center>
 
 ## Usage 
