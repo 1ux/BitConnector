@@ -4,10 +4,11 @@ The BitConnector is a Complex Programmable Logic Device (CPLD) Board, optimized 
 The BitConnector is designed to represent a classic DIP chip in 2.54mm pitch with 2 * 20 pins. 
 Configurations that are present in an HDL/schematic are transmitted via JTAG and stored permanently on the CPLD.
 
-
-<img alt="Image of main window" src="doc/Figures/BitConnector6P.png">
-<img alt="Image of main window" src="doc/Figures/BitConnector v3X_F.png">
-<img alt="Image of main window" src="doc/Figures/BitConnector v3X_F2.png">
+<table><tr>
+<td>    <img alt="Image of main window" src="doc/Figures/BitConnector6P.png"> </td>
+<td>   <img alt="Image of main window" src="doc/Figures/BitConnector v3X_F.png"> </td>
+<td>   <img alt="Image of main window" src="doc/Figures/BitConnector v3X_F2.png"> </td>
+</tr></table>
 
 ## Usage 
 For more, please see the documentation (Board_Doc_v1_germ.pdf)
