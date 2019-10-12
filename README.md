@@ -6,16 +6,58 @@ Configurations that are present in an HDL/schematic are transmitted via JTAG and
 
 
 <img alt="Image of main window" src="doc/Figures/BitConnector6P.png">
+<img alt="Image of main window" src="doc/Figures/BitConnector v3X_F.png">
+<img alt="Image of main window" src="doc/Figures/BitConnector v3X_F2.png">
 
 ## Usage 
-Please see page 2 of the documentation (Board_Doc_v1_germ.pdf)
+For more, please see the documentation (Board_Doc_v1_germ.pdf)
+
+|    |           |          |           |            |          |                   |
+| :- | :-------: | :------: | :-------- | :--------: | :------: | :---------------- |
+| **Nr** | **DIP-left**  | **CPLD-Pin** | **comment**   | **DIP-right**  | **CPLD-Pin** | **comment**           |
+| 1  |    CLK    |    1     | GCK3      |    3V3     |  15,35   | V<sub>ccINT</sub> |
+| 2  |    IO2    |    2     |           |    VCC     |    26    | V<sub>ccIO</sub>  |
+| 3  |    IO3    |    3     |           |    IO33    |    44    | GCK2              |
+| 4  |    IO4    |    5     |           |    IO32    |    43    | GCK1              |
+| 5  |    IO5    |    6     |           |    IO31    |    42    |                   |
+| 6  |    IO6    |    7     |           |    IO30    |    41    |                   |
+| 7  |    IO7    |    8     |           |    IO29    |    40    |                   |
+| 8  |    IO8    |    12    |           |    IO28    |    39    |                   |
+| 9  |    IO9    |    13    |           |    IO27    |    38    |                   |
+| 10 |   IO10    |    14    |           |    IO26    |    37    |                   |
+| 11 |   IO11    |    16    |           |    IO25    |    36    | GTS1              |
+| 12 |   IO12    |    18    |           |    IO24    |    34    | GTS2              |
+| 13 |   IO13    |    19    |           |    IO23    |    32    |                   |
+| 14 |   IO14    |    20    |           |    IO22    |    31    |                   |
+| 15 |   IO15    |    21    |           |    IO21    |    30    |                   |
+| 16 |   IO16    |    22    |           |    IO20    |    29    |                   |
+| 17 |   IO17    |    23    |           |    IO19    |    28    |                   |
+| 18 |    TCK    |    11    | JTAG      |    IO18    |    27    |                   |
+| 19 |    TDO    |    24    | JTAG      |    TDI     |    9     | JTAG              |
+| 20 |    GND    | 17,25,4  |           |    TMS     |    10    | JTAG              |
+
+## Build
+
+The BitConverter was designed in a minimal configuration with commercially available components. 
+In addition to the schematic, the gerber files for board production was also published.
+
+|       |                               |               |               |               |
+| :-    | :---------------------------: | :--------:    | :---------:   |   :---------: |
+|   Nr  |   component                   |  value        |   quantity    |   package     |
+|   1   |   Unpolarized capacitor       |   100nF       |   3           |   0603        |
+|   2   |   LED                         |   blue        |   1           |   1206        |
+|   3   |   Resistor                    |   4K7         |   4           |   0805        |
+|   4   |   Resistor                    |   120         |   1           |   0805        |
+|   5   |   Push button                 |   6 mm        |   1           |   THT         |
+|   6   |   Pin Header 1x20             |   2,54 mm     |   2           |   vertical    |
+|   7   |   XC9536XL/XC9572XL           |   CPLD        |   1           |   VQ44        |
 
 
 ## Licence
 This project is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
 
 This project is free: you can redistribute it and/or modify
-it under the terms of CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+it under the terms of [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
 Excluded from this license is the logo(./doc/Figures/Logo.pdf).
 Should you change or delete something, please remove the logo.
 
