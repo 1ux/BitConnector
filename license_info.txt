@@ -1,0 +1,6 @@
+This project is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
+
+This project is free: you can redistribute it and/or modify
+it under the terms of CC BY-SA 4.0 (look over here: https://creativecommons.org/licenses/by-sa/4.0/deed.de)
+Excluded from this license is the logo(./doc/Figures/Logo.pdf).
+Should you change or delete something, please remove the logo.
