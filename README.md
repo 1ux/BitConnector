@@ -5,9 +5,9 @@ The BitConnector is designed to represent a classic DIP chip in 2.54mm pitch wit
 Configurations that are present in an HDL/schematic are transmitted via JTAG and stored permanently on the CPLD.
 
 <table><tr>
-<td>    <img alt="Image of main window" src="doc/Figures/BitConnector6P.png"> </td>
-<td>   <img alt="Image of main window" src="doc/Figures/BitConnector v3X_F.png"> </td>
-<td>   <img alt="Image of main window" src="doc/Figures/BitConnector v3X_F2.png"> </td>
+<td>   <img alt="BitConnector" src="doc/Figures/BitConnector6P.png"> </td>
+<td>   <img alt="BitConnector circuit board" src="doc/Figures/BitConnector v3X_F.png"> </td>
+<td>   <img alt="BitConnector PCB layout" src="doc/Figures/BitConnector v3X_F2.png"> </td>
 </tr></table>
 
 ## Usage 
@@ -36,6 +36,12 @@ For more, please see the documentation (Board_Doc_v1_germ.pdf)
 | 18 |    TCK    |    11    | JTAG      |    IO18    |    27    |                   |
 | 19 |    TDO    |    24    | JTAG      |    TDI     |    9     | JTAG              |
 | 20 |    GND    | 17,25,4  |           |    TMS     |    10    | JTAG              |
+
+GSR=Global Reset, GTS=Global Tri-State, GCK=Global Clock
+
+<img src="doc/Figures/development_environment.png" width="400"/>
+
+Example experimental setup
 
 ## Build
 
