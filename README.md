@@ -11,6 +11,10 @@ Configurations that are present in an HDL/schematic are transmitted via JTAG and
 </tr></table>
 
 ## Usage 
+Example experimental setup:
+
+<img src="doc/Figures/development_environment.png" width="400"/>
+
 For more, please see the documentation (Board_Doc_v1_germ.pdf)
 
 |    |           |          |           |            |          |                   |
@@ -39,25 +43,27 @@ For more, please see the documentation (Board_Doc_v1_germ.pdf)
 
 GSR=Global Reset, GTS=Global Tri-State, GCK=Global Clock
 
-<img src="doc/Figures/development_environment.png" width="400"/>
-
-Example experimental setup
-
 ## Build
 
-The BitConverter was designed in a minimal configuration with commercially available components. 
+The BitConverter was designed in a minimal configuration with commercially available components.
+The bracketed components are optional for schmitt trigger action.
 In addition to the schematic, the gerber files for board production was also published.
 
 |       |                               |               |               |               |
 | :-    | :---------------------------: | :--------:    | :---------:   |   :---------: |
 |   Nr  |   component                   |  value        |   quantity    |   package     |
 |   1   |   Unpolarized capacitor       |   100nF       |   3           |   0603        |
-|   2   |   LED                         |   blue        |   1           |   1206        |
-|   3   |   Resistor                    |   4K7         |   4           |   0805        |
-|   4   |   Resistor                    |   120         |   1           |   0805        |
-|   5   |   Push button                 |   6 mm        |   1           |   THT         |
-|   6   |   Pin Header 1x20             |   2,54 mm     |   2           |   vertical    |
-|   7   |   XC9536XL/XC9572XL           |   CPLD        |   1           |   VQ44        |
+|  (2)  |   Unpolarized capacitor       |   100nF       |   3           |   0603        |
+|   3   |   LED                         |   blue        |   1           |   1206        |
+|   4   |   Resistor                    |   10K         |   4           |   0805        |
+|  (5)  |   Resistor                    |   100K        |   1           |   0805        |
+|  (6)  |   Resistor                    |   10K         |   1           |   0805        |
+|  (7)  |   74LVC2G14                   |   Schmitt-Tr  |   1           |   SOT363      |
+|   8   |   Resistor                    |   120         |   1           |   0805        |
+|   9   |   Push button                 |   6 mm        |   1           |   THT         |
+|   10  |   Pin Header 1x20             |   2,54 mm     |   2           |   vertical    |
+|   11  |   XC9536XL/XC9572XL           |   CPLD        |   1           |   VQ44        |
+
 
 
 ## Licence
