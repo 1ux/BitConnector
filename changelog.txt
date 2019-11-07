@@ -1,0 +1,5 @@
+BitConnector v3X:
+	- optimize DIP pin spacing for use on a breadboard
+	- change JTAG IDC pin header from 8 to 6 pins
+	- optimize some circuit paths
+	- change logo on copper print
