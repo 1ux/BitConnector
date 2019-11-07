@@ -1,11 +1,35 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# BitConnector-rescue_Xilinx_CPLD_VQFP_2_DIP-rescue_XC9536XL-VQ44-Xilinx-VQ44-Xilinx_CPLD_VQFP_2_DIP-rescue-BitConnector
+# 74xGxx_74LVC2G14
 #
-DEF BitConnector-rescue_Xilinx_CPLD_VQFP_2_DIP-rescue_XC9536XL-VQ44-Xilinx-VQ44-Xilinx_CPLD_VQFP_2_DIP-rescue-BitConnector U 0 20 Y Y 1 F N
+DEF 74xGxx_74LVC2G14 U 0 40 Y Y 2 F N
+F0 "U" -100 150 50 H V C CNN
+F1 "74xGxx_74LVC2G14" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ SG-*
+ SOT*
+$ENDFPLIST
+DRAW
+P 3 0 1 0 -75 -25 -50 -25 -50 25 N
+P 4 0 1 10 -150 100 -150 -100 100 0 -150 100 N
+P 4 0 1 0 -100 -25 -75 -25 -75 25 -25 25 N
+X GND 2 0 -100 0 D 40 40 0 1 W N
+X VCC 5 0 100 0 U 40 40 0 1 W N
+X ~ 1 -300 0 150 R 40 40 1 1 I
+X ~ 6 250 0 150 L 40 40 1 1 O I
+X ~ 3 -300 0 150 R 40 40 2 1 I
+X ~ 4 250 0 150 L 40 40 2 1 O I
+ENDDRAW
+ENDDEF
+#
+# BitConnector-rescue_Xilinx_CPLD_VQFP_2_DIP-rescue_XC9536XL-VQ44-Xilinx-VQ44-Xilinx_CPLD_VQFP_2_DIP-rescue-BitConnector-BitConnector-rescue
+#
+DEF BitConnector-rescue_Xilinx_CPLD_VQFP_2_DIP-rescue_XC9536XL-VQ44-Xilinx-VQ44-Xilinx_CPLD_VQFP_2_DIP-rescue-BitConnector-BitConnector-rescue U 0 20 Y Y 1 F N
 F0 "U" -550 1300 50 H V C CNN
-F1 "BitConnector-rescue_Xilinx_CPLD_VQFP_2_DIP-rescue_XC9536XL-VQ44-Xilinx-VQ44-Xilinx_CPLD_VQFP_2_DIP-rescue-BitConnector" -550 -1300 50 H V C CNN
+F1 "BitConnector-rescue_Xilinx_CPLD_VQFP_2_DIP-rescue_XC9536XL-VQ44-Xilinx-VQ44-Xilinx_CPLD_VQFP_2_DIP-rescue-BitConnector-BitConnector-rescue" -550 -1300 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -54,6 +78,25 @@ X M4 6 -700 900 150 R 50 50 1 1 B
 X M5 7 -700 800 150 R 50 50 1 1 B
 X M6 8 -700 700 150 R 50 50 1 1 B
 X TDI 9 700 -900 150 L 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# Connector_Generic_Conn_01x02
+#
+DEF Connector_Generic_Conn_01x02 J 0 40 Y N 1 F N
+F0 "J" 0 100 50 H V C CNN
+F1 "Connector_Generic_Conn_01x02" 0 -200 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Connector*:*_1x??_*
+$ENDFPLIST
+DRAW
+S -50 -95 0 -105 1 1 6 N
+S -50 5 0 -5 1 1 6 N
+S -50 50 50 -150 1 1 10 f
+X Pin_1 1 -200 0 150 R 50 50 1 1 P
+X Pin_2 2 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
@@ -194,6 +237,28 @@ DRAW
 S -40 -100 40 100 0 1 10 N
 X ~ 1 0 150 50 D 50 50 1 1 P
 X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Jumper_SolderJumper_2_Open
+#
+DEF Jumper_SolderJumper_2_Open JP 0 0 Y N 1 F N
+F0 "JP" 0 80 50 H V C CNN
+F1 "Jumper_SolderJumper_2_Open" 0 -100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ SolderJumper*Open*
+$ENDFPLIST
+DRAW
+A -10 0 40 901 -901 0 1 0 N -10 40 -10 -40
+A -10 0 40 901 -901 0 1 0 F -10 40 -10 -40
+A 10 0 40 -899 899 0 1 0 N 10 -40 10 40
+A 10 0 40 -899 899 0 1 0 F 10 -40 10 40
+P 2 0 1 0 -10 40 -10 -40 N
+P 2 0 1 0 10 40 10 -40 N
+X A 1 -150 0 100 R 50 50 1 1 P
+X B 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
