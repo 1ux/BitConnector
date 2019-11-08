@@ -1,3 +1,12 @@
+BitConnector v4X:
+	- Add hardware debouncing via schmitt trigger action via 74LVC2G14
+	- A low-pass filter in front of the schmitt trigger is provided.
+	- The schmnitt trigger adds another external inverter. Usable over J2.
+ 	- As an alternative, add jumper to bridge the schmitt trigger IC 74LVC2G14.
+          Use this to fallback to v3X. (Push Button is now active low)
+ 	- Partial redesign of the routing
+	- Move copper logo to the silkscreen on the back
+
 BitConnector v3X:
 	- optimize DIP pin spacing for use on a breadboard
 	- change JTAG IDC pin header from 8 to 6 pins
