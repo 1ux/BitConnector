@@ -53,7 +53,7 @@ In addition to the schematic, the gerber files for board production was also pub
 | :-    | :---------------------------: | :--------:    | :---------:   |   :---------: |
 |   Nr  |   component                   |  value        |   quantity    |   package     |
 |   1   |   Unpolarized capacitor       |   100nF       |   3           |   0603        |
-|  (2)  |   Unpolarized capacitor       |   100nF       |   3           |   0603        |
+|  (2)  |   Unpolarized capacitor       |   100nF       |   1           |   0603        |
 |   3   |   LED                         |   blue        |   1           |   1206        |
 |   4   |   Resistor                    |   10K         |   4           |   0805        |
 |  (5)  |   Resistor                    |   100K        |   1           |   0805        |
