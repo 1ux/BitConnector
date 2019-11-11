@@ -5,3 +5,12 @@ BitConnector-rescue.lib
 fp-info-cache
 fp-lib-table
 sym-lib-table
+
+*.aux
+*.bbl
+*.blg
+*.bcf
+*.log
+*.out
+*.xml
+.*gz
