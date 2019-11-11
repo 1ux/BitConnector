@@ -52,7 +52,7 @@
 \end{picture} %
 
 \section{Einführung}
-Die noch immer andauernden Bemühungen der mikrokosmischen Minimierung von integriertern Schaltkreisen hat Integrationsdichten hervorgebracht, die traditionelle Schaltkreise wie einzelne Register, Zähler, ALUs oder Multiplexer vom Markt verschwinden ließen. Aus der Sicht des Endkonsumentenmarktes mag dieser Schritt folgerichtig sein, jedoch gibt es jenseits dessen noch immer das Bedürfnis auf der Register-Transfer Ebene oder darunter, Logikschaltkreise zu modellieren und zu realisieren. Dieses Bedürfnis kann beispielsweise der akademischen Lehre, dem Wunsch nach Parallelisierung oder der Vorgabe zeitkritischer Anwendungen entspringen. Obwohl es diesbezüglich eine Vielzahl von FPGAs und CPLD-Typen zur Abhilfe gibt, gestaltet sich der prototypische Aufbau auf einem Steckbrett mit Hilfe dieser Chips als als nahezu unmöglich. Derartige Chips besitzen meist eine Vielzahl an Pins, die nicht im Dual in-line package (DIP) vorliegen. Der BitConnector versucht dieses Problem zu lösen.
+Die noch immer andauernden Bemühungen der mikrokosmischen Minimierung von integriertern Schaltkreisen hat Integrationsdichten hervorgebracht, die traditionelle Schaltkreise wie einzelne Register, Zähler, ALUs oder Multiplexer vom Markt verschwinden ließen. Aus der Sicht des Endkonsumentenmarktes mag dieser Schritt folgerichtig sein, jedoch gibt es jenseits dessen noch immer das Bedürfnis auf der Register-Transfer Ebene oder darunter, Logikschaltkreise zu modellieren und zu realisieren. Dieses Bedürfnis kann beispielsweise der akademischen Lehre, dem Wunsch nach Parallelisierung oder der Vorgabe zeitkritischer Anwendungen entspringen. Obwohl es diesbezüglich eine Vielzahl von FPGAs und CPLD-Typen zur Abhilfe gibt, gestaltet sich der prototypische Aufbau auf einem Steckbrett mit Hilfe dieser Chips als nahezu unmöglich. Derartige Chips besitzen meist eine Vielzahl an Pins, die nicht im Dual in-line package (DIP) vorliegen. Der BitConnector versucht dieses Problem zu lösen.
 
 \vspace{0.5cm}
 
@@ -165,6 +165,19 @@ An dieser Stelle ist noch erwähnenswert, dass Sie nach \autocite[17]{XC95_maxI}
 \subsection{Definition der I/O Spannung über VCC\textsubscript{IO}}
 
 Neben der Versorgungsspannung VCC\textsubscript{INT} existiert direkt darunterliegend der Pin VCC\textsubscript{IO}(siehe Kapitel \ref{sec:Pins}), welcher die Höhe der Pin-Ausgangsspannung definiert. Sie können die Spannung der Ausgänge bei einem h-Pegel auf 3,3V oder auf 2,5V setzen. Für eine Ausgangsspannung von 3,3 Volt, sollte VCC\textsubscript{IO} zwischen 3V und 3,6V liegen. Wird dagegen eine Ausgangsspannung von 2,5V forciert, sollte VCC\textsubscript{IO} zwischen 2,3V und 2,7V liegen \autocite[3]{XC95_Spec}
+
+\subsection{Ausgangskennlinie eines XC9536XL CPLDs}
+Sobald Sie einen Pin des BitConnectors mit einem Stromfluss belasten, in dem Sie beispielsweise eine LED ansteuern, sackt die Ausgangsspannung des entsprechenden I/O-Pins ab. Dieser Effekt geht auf den verwendeten CPLD zurück. Um nun eine Vorstellung zu erhalten, wie sich der treibende Strom zur Spannung verhält, hat der Autor einige stichpunktartig Messungen durchgeführt. Diese Messwerte sind in Abbildung \ref{fig:out_characteristics} , mittels Bezierinterpolation grafisch dargestellt.
+Die Messreihe wurde mittels Fluke 87 III , Strom/Spannungsrichtig aufgenommen, VCC\textsubscript{INT} und VCC\textsubscript{IO} betrugen 3,3V, IO33 (CPLD Pin 44) war der (einzige) belastete Ausgang. Obwohl es sich bei der Messung um einen XC9536XL CPLD handelt, ist es naheliegend, dass der XC9572XL eine sehr ähnliche Charakteristik zeigt. Verwunderlich ist, dass die Messreihe teilweise signifikant von der Xilinx-Spezifikation \autocite[6]{XC_Curves} abweicht.  Dennoch wurde in Kapitel \ref{sec:max_I} auf die von Xilinx veröffentlichte Spezifikation zurück gegriffen.
+
+\newpage
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{Figures/XC9536_output_characteristics}
+	\caption{Ausgangskennlinien eines XC9536XL}
+	\label{fig:out_characteristics}
+\end{figure}
 
 \subsection{Maximaler Stromfluss $I_{max}$}
 \label{sec:max_I}
