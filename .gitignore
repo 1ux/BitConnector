@@ -13,4 +13,4 @@ sym-lib-table
 *.log
 *.out
 *.xml
-.*gz
+*.gz
