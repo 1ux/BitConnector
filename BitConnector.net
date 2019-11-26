@@ -1,8 +1,8 @@
 (export (version D)
   (design
     (source /home/lux/Desktop/BitConnector/BitConnector.sch)
-    (date "Do 07 Nov 2019 15:39:36 CET")
-    (tool "Eeschema 5.1.4")
+    (date "Di 26 Nov 2019 20:44:45 CET")
+    (tool "Eeschema 5.1.5")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
         (title "XC95## VQ44 to DIP 40")
@@ -128,7 +128,7 @@
       (tstamp 5DBF2111))
     (comp (ref U2)
       (value 74LVC2G14)
-      (footprint Package_TO_SOT_SMD:SOT-363_SC-70-6_Handsoldering)
+      (footprint Package_SO:SC-74-6_1.5x2.9mm_P0.95mm)
       (datasheet https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf)
       (libsource (lib 74xGxx) (part 74LVC2G14) (description "Dual NOT Gate Schmitt Triggered, Low-Voltage CMOS"))
       (sheetpath (names /) (tstamps /))

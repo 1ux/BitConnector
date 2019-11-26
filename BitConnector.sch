@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:BitConnector-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -712,7 +711,7 @@ U 1 1 5DBBF222
 P 5800 1900
 F 0 "U2" H 5775 1633 50  0000 C CNN
 F 1 "74LVC2G14" H 5775 1724 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6_Handsoldering" H 5800 1900 50  0001 C CNN
+F 2 "Package_SO:SC-74-6_1.5x2.9mm_P0.95mm" H 5800 1900 50  0001 C CNN
 F 3 "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf" H 5800 1900 50  0001 C CNN
 	1    5800 1900
 	-1   0    0    1   
@@ -723,7 +722,7 @@ U 2 1 5DB3A7BA
 P 6050 3750
 F 0 "U2" H 6025 4017 50  0000 C CNN
 F 1 "74LVC2G14" H 6025 3926 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-363_SC-70-6_Handsoldering" H 6050 3750 50  0001 C CNN
+F 2 "Package_SO:SC-74-6_1.5x2.9mm_P0.95mm" H 6050 3750 50  0001 C CNN
 F 3 "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf" H 6050 3750 50  0001 C CNN
 	2    6050 3750
 	-1   0    0    -1  
