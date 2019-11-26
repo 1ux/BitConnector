@@ -20,7 +20,7 @@ For more, please see the documentation (Board_Doc_v1_germ.pdf)
 
 |    |           |          |           |            |          |                   |
 | :- | :-------: | :------: | :-------- | :--------: | :------: | :---------------- |
-| **Nr** | **DIP-left**  | **CPLD-Pin** | **comment**   | **DIP-right**  | **CPLD-Pin** | **comment**           |
+| **No** | **DIP-left**  | **CPLD-Pin** | **comment**   | **DIP-right**  | **CPLD-Pin** | **comment** |
 | 1  |    CLK    |    1     | GCK3      |    3V3     |  15,35   | V<sub>ccINT</sub> |
 | 2  |    IO2    |    2     |           |    VCC     |    26    | V<sub>ccIO</sub>  |
 | 3  |    IO3    |    3     |           |    IO33    |    44    | GCK2              |
@@ -48,11 +48,10 @@ GSR=Global Reset, GTS=Global Tri-State, GCK=Global Clock
 
 The BitConverter was designed in a minimal configuration with commercially available components.
 The bracketed components are optional for schmitt trigger action.
-In addition to the schematic, the gerber files for board production was also published.
-
+In addition to the schematic, the Gerber files for board production have also been published.
 |       |                               |               |               |               |
 | :-    | :---------------------------: | :--------:    | :---------:   |   :---------: |
-|   Nr  |   component                   |  value        |   quantity    |   package     |
+|   No  |   component                   |  value        |   quantity    |   package     |
 |   1   |   Unpolarized capacitor       |   100nF       |   3           |   0603        |
 |  (2)  |   Unpolarized capacitor       |   100nF       |   1           |   0603        |
 |   3   |   LED                         |   blue        |   1           |   1206        |
@@ -72,6 +71,10 @@ This project is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 This project is free: you can redistribute it and/or modify
 it under the terms of [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
-Excluded from this license is the logo(./doc/Figures/Logo.pdf).
+Excluded from this licence is the logo(./doc/Figures/Logo.pdf).
 Should you change or delete something, please remove the logo.
 
+## Thanks to:
+
+- Jeremy Heighway for mentoring English grammar and spelling.
+- Jana Weigel for graphic design consulting, mentoring German grammar and spelling.
