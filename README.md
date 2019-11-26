@@ -1,3 +1,5 @@
+*„Jede Lösung eines Problems ist ein neues Problem.“ - J. W. Goehte*
+
 # BitConnector
 
 The BitConnector is a Complex Programmable Logic Device (CPLD) Board, optimized for hardware-based, digital prototype design on a breadboard. 
@@ -16,7 +18,7 @@ Example experimental setup:
 
 <img src="doc/Figures/development_environment.png" width="400"/>
 
-For more, please see the documentation (Board_Doc_v1_germ.pdf)
+For more, please see the [documentation](https://github.com/1ux/BitConnector/blob/master/Board_Doc_German.pdf).
 
 |    |           |          |           |            |          |                   |
 | :- | :-------: | :------: | :-------- | :--------: | :------: | :---------------- |
@@ -73,7 +75,7 @@ Supplements and notes:
 ## Thanks to:
 
 - Jeremy Heighway for mentoring English grammar and spelling.
-- Jana Weigel for graphic design consulting, mentoring German grammar and spelling.
+- [Jana Weigel](https://janaweigel.wordpress.com/) for graphic design consulting, mentoring German grammar and spelling.
 
 ## Licence
 This project by Michael Krause is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
