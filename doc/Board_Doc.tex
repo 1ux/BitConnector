@@ -32,7 +32,7 @@
 
 \setlength{\parindent}{0em} 
 
-\title{Dokumentation des BitConnector v3X}
+\title{Dokumentation des BitConnector v4X}
 \author{Michael Krause \\CC BY-SA 4.0 (except logo)}
 
 \date{\today}
@@ -61,7 +61,7 @@ Die noch immer andauernden Bemühungen der mikrokosmischen Minimierung von integ
 \begin{wrapfigure}[14]{l}{0.50\textwidth}
 		\vspace { -15pt }
 	\includegraphics[scale=0.3]{BitConnector6P} 
-	\caption{BitConnector v3X}
+	\caption{BitConnector v4X}
 	\label{fig:}
 \end{wrapfigure}
 
@@ -144,7 +144,7 @@ Es wird empfohlen, Spannungen über und unter 3,3V($\pm 0,3V$) zu vermeiden!
 	\end{tabular}
 \end{minipage}
 \\\\\\
-Pin 33 ist an dem h-aktiven Taster SW1 fest verdrahtet, zudem ist Pin 33 auch GRS
+Pin 33 ist an dem Taster SW1 fest verdrahtet, zudem ist Pin 33 auch GRS
 (GSR=Global Reset, GTS=Global Tri-State, GCK=Global Clock).
 %GPIO (General Purpose Input/Output)
 \newpage
@@ -234,6 +234,14 @@ Daraus folgt:
 Der Wert $I_{max}$ sagt aus, dass bei einer I/O-Spannung von 1,85V und einer Stromstärke von 30mA pro Ausgang, eine Gesamtstromstärke von 1,63A erreicht wird. Hierbei liegt die Chiptemperatur $\leq $ der als kritisch angenommenen 70$\si{\celsius}$. Auffällig ist, dass die 1,63A in dieser Konstellation im Bitconnector nie erreicht werden können, da dieser nur 34 mögliche Ausgänge bietet. Mit den getroffenen Annahmen ist jedoch die Versorgung von $\frac{1,63A}{0,03}\approx54$ Ausgänge möglich.\\\\
 Bitte verlassen Sie sich nicht auf die angegebene Berechnung und überprüfen Sie auch die Quellen. Sollten Sie einen Fehler finden, wäre ich Ihnen sehr dankbar, wenn Sie mich diesbezüglich kontaktieren.
 
+\section{Hardware Entprellung}
+Gelegentlich ist es sehr wichtig, eine getaktete, sequenzielle Schaltung schrittweise, manuell über einen Taster zu durchlaufen. Leider erzeugen so ziemlich alle handelsüblichen Taster ein Prellen. Ein solches Prellen führt zu einer undefinierten Abfolge von Signalimpulsen. Da Sie bei CPLDs prinzipiell mit Ihren Flip-Flop-Ressourcen sehr haushalten müssen, wurde für den BitConnector eine Hardwareentprellung vorgesehen. Sofern Ihre Ausführung mit dem 74LVC2G14 IC bestückt ist, ist der Taster SW1 auf dem Board automatisch entprellt. Sollte dies nicht der Fall sein, so können Sie auf Grundlage der nachfolgenden Erläuterungen, eine eigene Hardwareentprellung nachschalten.
+\subsection{Prinzip der Hardwareentprellung}
+Da die vom Menschen erzeugten Frequenzen der Tastendrücke im Vergleich zum Prellen des Tasters sehr niedrig sind, wurde ein Tiefpassfilter in Form eines RC-Gliedes dem Taster nachgeschaltet. 
+Dieser Tiefpass filtert die hochfrequenten Anteile des Prellens aus dem Tastendruck heraus. Das Prellen ist verschwunden. Es entsteht allerdings ein neues Problem. Da ein RC-Glied naturgemäß aus einem Widerstand und einem Kondensator besteht, durchläuft dieser Kondensator eine Ladespannung, die dem natürlichen Logarithmus sehr nahe kommt (siehe beispielsweise \autocite{RC}). Eine digitale Schaltung auf CMOS-Basis benötigt jedoch eine steile Signalflanke, also beispielsweise einen Signalwechsel von 0V auf direkt 3,3V. Andernfalls besteht die Gefahr, dass die Schaltung in einen undefinierten Zustand abrutscht. Auf Transistorebene kann dieser undefinierte Zustand sehr gefährlich sein, da eine Transistorkonstellation, die es theoretisch so nicht geben sollte, plötzlich anfangen kann, den Strom zu leiten. Zudem werden Sie immer noch keinen auswertbaren Tastenimpuls erwarten können. Es ist daher zwingend anzuraten, diese undefinierten Signalzustände in digitalen Schaltungen zu vermeiden. Dies geschieht hier mit Hilfe eines Schmitt-Triggers. Der Schmitt-Trigger soll verkürzt dargestellt, den undefinierten Spannungsbereich auf einen definierten high- oder low- Pegel zurück bringen. Die charakteristische Hysterese eines Schmitt-Triggers ist dafür verantwortlich, den undefinierten Spannungsbereich zu vermeiden. Sie können sich den Schmitt-Trigger in diesem Fall als den „eigentlichen Schalter“ vorstellen, der am Ausgang immer einen steilen Pegel schaltet, während er am Eingang eine Kondenstorkennlinie „sieht“.
+%Grafiken (Auch Schaltplan) und Berechnungen einfügen.
+
+
 \section{Entwicklungsumgebung}
 
 Momentan gibt es noch keine freie \autocite{FSF} Entwicklungsumgebung für Xilinx CPLDs, weswegen leider auf proprietäre Software der Firma Xilinx zurück gegriffen werden muss.
@@ -274,7 +282,7 @@ Innerhalb dieser Abbildung erkennen Sie eine „1“, die den ersten Pin markier
 In Abbildung \ref{fig:data_cable} erkennen Sie das favorisierte Datenkabel vom BitConnector zum Programmiergerät. Anders als in Abbildung \ref{fig:pinheader}, ist der 6 Pin Connector diesmal als Buchse ausgeführt und somit gespiegelt. Bei dem HW-RIBBON14 female connector hat sich Xilinx für eine eher exotische Buchse im 2 mm Raster entschieden. Die Kette des Datenkabels sieht abstrakt zusammen gefasst folgendermaßen aus:
 \vspace{0.5cm}
 \begin{center}
-	PC<--USB-Kable-->Programmierer<--Programmierkabel-->BitConnector
+	PC<->USB-Kable<->Programmierer<->Programmierkabel<->BitConnector
 \end{center}
 
 \vspace{0.5cm}
