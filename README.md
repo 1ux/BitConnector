@@ -63,13 +63,13 @@ Supplements and notes:
 |   6   |   Resistor                    |   120         |   1           |   0805        |
 |   7   |   LED                         |   blue        |   1           |   1206        |
 |   8   |   Push button                 |   6 mm        |   1           |   THT         |
-|   9   |   Pin Header 1x20             |   2,54 mm     |   2           |   vertical    |
+|   9   |   Pin Header 1x20             |   2.54 mm     |   2           |   vertical    |
 |  (10) |   74LVC2G14                   |   Schmitt-Tr  |   1           |   SOT457      |
 |   11  |   XC9536XL/XC9572XL           |   CPLD        |   1           |   VQ44/VQG44  |
 
 - You can use the [XC9536XL](https://www.xilinx.com/support/documentation/data_sheets/ds058.pdf) or the more powerful [XC9572XL](https://www.xilinx.com/support/documentation/data_sheets/ds057.pdf) CPLD.
 - The BitConverter was designed in a minimal configuration with commercially available components.
-- The bracketed components are optional for hardware debouncing/schmitt trigger action over [74LVC2G14](https://assets.nexperia.com/documents/data-sheet/74LVC2G14.pdf).
+- The bracketed components are optional for hardware debouncing/Schmitt trigger action via [74LVC2G14](https://assets.nexperia.com/documents/data-sheet/74LVC2G14.pdf).
 - If you make the board without hardware debouncing, please set the solderjumper JP1.
 - In addition to the schematic, the Gerber files for board production have also been published.
 
