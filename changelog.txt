@@ -1,3 +1,12 @@
+BitConnector v5X:
+	- switch solder pad for resistors from 1.15mm to 1.20mm
+	- add additional 10nF bypass capacitor according to 
+	  Xilinx XAPP104 (3.0.1) specification
+	- Completely new board layout created to improve 
+	  GND and Vcc connection and suppress interference signals
+	- fallback to v3X (minimal configuration) is retained 
+	- 74LVC2G14 (schmitt trigger) now has a better footprint 
+	
 BitConnector v4X:
 	- Add hardware debouncing via schmitt trigger action via 74LVC2G14
 	- A low-pass filter in front of the schmitt trigger is provided.
