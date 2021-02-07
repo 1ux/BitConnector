@@ -78,6 +78,8 @@ Supplements and notes:
 
 - Jeremy Heighway for mentoring English grammar and spelling.
 - [Jana Weigel](https://janaweigel.wordpress.com/) for graphic design consulting, mentoring German grammar and spelling.
+- [Lothar Miller](http://www.lothar-miller.de/) for PCB design consulting.
+- [mikrocontroller.net](https://www.mikrocontroller.net/topic/492067) for failure analysis and life experience ;).
 
 ## Licence
 This project by Michael Krause is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
