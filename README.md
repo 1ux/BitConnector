@@ -56,16 +56,17 @@ Supplements and notes:
 | :-    | :---------------------------: | :--------:    | :---------:   |   :---------: |
 |   No  |   component                   |  value        |   quantity    |   package     |
 |   1   |   Unpolarized capacitor       |   100nF       |   3           |   0603        |
-|  (2)  |   Unpolarized capacitor       |   100nF       |   1           |   0603        |
-|  (3)  |   Resistor                    |   100K        |   1           |   0805        |
-|  (4)  |   Resistor                    |   10K         |   1           |   0805        |
-|   5   |   Resistor                    |   10K         |   4           |   0805        |
-|   6   |   Resistor                    |   120         |   1           |   0805        |
-|   7   |   LED                         |   blue        |   1           |   1206        |
-|   8   |   Push button                 |   6 mm        |   1           |   THT         |
-|   9   |   Pin Header 1x20             |   2.54 mm     |   2           |   vertical    |
-|  (10) |   74LVC2G14                   |   Schmitt-Tr  |   1           |   SOT457      |
-|   11  |   XC9536XL/XC9572XL           |   CPLD        |   1           |   VQ44/VQG44  |
+|   2   |   Unpolarized capacitor       |   10nF        |   3           |   0603        |
+|  (3)  |   Unpolarized capacitor       |   100nF       |   1           |   0603        |
+|  (4)  |   Resistor                    |   100K        |   1           |   0805        |
+|  (5)  |   Resistor                    |   10K         |   1           |   0805        |
+|   6   |   Resistor                    |   10K         |   4           |   0805        |
+|   7   |   Resistor                    |   120         |   1           |   0805        |
+|   8   |   LED                         |   blue        |   1           |   1206        |
+|   9   |   Push button                 |   6 mm        |   1           |   THT         |
+|   10  |   Pin Header 1x20             |   2.54 mm     |   2           |   vertical    |
+|  (11) |   74LVC2G14                   |   Schmitt-Tr  |   1           |   SOT457      |
+|   12  |   XC9536XL/XC9572XL           |   CPLD        |   1           |   VQ44/VQG44  |
 
 - You can use the [XC9536XL](https://www.xilinx.com/support/documentation/data_sheets/ds058.pdf) or the more powerful [XC9572XL](https://www.xilinx.com/support/documentation/data_sheets/ds057.pdf) CPLD.
 - The BitConverter was designed in a minimal configuration with commercially available components.
