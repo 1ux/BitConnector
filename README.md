@@ -13,12 +13,14 @@ Configurations that are present in an HDL/schematic are transmitted via JTAG and
 <td>   <img alt="BitConnector PCB layout" src="doc/Figures/BitConnector v4X_F2.png"> </td>
 </tr></table>
 
-## Usage 
+## Usage & Documentation
 Example experimental setup:
 
 <img src="doc/Figures/development_environment.png" width="400"/>
 
-For more, please see the [documentation](https://github.com/1ux/BitConnector/blob/master/Board_Doc_German.pdf).
+- there is detailed German board [documentation](https://github.com/1ux/BitConnector/blob/master/Board_Doc_German.pdf)
+- here is the [schematic](https://github.com/1ux/BitConnector/raw/master/schematic_v5X.pdf)
+- for a revision overview check: [changelog](https://github.com/1ux/BitConnector/blob/master/changelog.txt)
 
 |    |           |          |           |            |          |                   |
 | :- | :-------: | :------: | :-------- | :--------: | :------: | :---------------- |
