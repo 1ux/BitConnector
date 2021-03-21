@@ -69,9 +69,12 @@ Supplements and notes:
 |   8   |   LED                         |   blue        |   1           |   1206        |
 |   9   |   Push button                 |   6 mm        |   1           |   THT         |
 |   10  |   Pin Header 1x20             |   2.54 mm     |   2           |   vertical    |
-|  (11) |   74LVC2G14                   |   Schmitt-Tr  |   1           |   SOT457      |
-|   12  |   XC9536XL/XC9572XL           |   CPLD        |   1           |   VQ44/VQG44  |
+|   11  |   IDC Header 2x3              |   2.54 mm     |   1           |   vertical    |
+|  (12) |   Pin Socket 1x2              |   2.54 mm     |   1           |   vertical    |
+|  (13) |   74LVC2G14                   |   Schmitt-Tr  |   1           |   SOT457      |
+|   14  |   XC9536XL/XC9572XL           |   CPLD        |   1           |   VQ44/VQG44  |
 
+- The components without brackets correspond to the minimum configuration (without hardware debouncing).
 - You can use the [XC9536XL](https://www.xilinx.com/support/documentation/data_sheets/ds058.pdf) or the more powerful [XC9572XL](https://www.xilinx.com/support/documentation/data_sheets/ds057.pdf) CPLD.
 - The BitConverter was designed in a minimal configuration with commercially available components.
 - The bracketed components are optional for hardware debouncing/Schmitt trigger action via [74LVC2G14](https://assets.nexperia.com/documents/data-sheet/74LVC2G14.pdf).
