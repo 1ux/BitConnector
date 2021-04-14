@@ -23,7 +23,7 @@
 %-----------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %-----------------------------------------------------------------------
-\usepackage[style=numeric]{biblatex}
+\usepackage[style=numeric,sorting=none,backend=biber]{biblatex}
 \addbibresource{Bibliographiedatei.bib}
 %-----------------------------------------------------------------------
 
@@ -48,7 +48,7 @@
 %\thispagestyle{empty}
 %\setlength{\unitlength}{1mm}
 \begin{picture}(0,0)
-\put(270,38){\includegraphics[scale=0.10]{Logo}}
+\put(230,20){\includegraphics[scale=0.10]{Logo}}
 \end{picture} %
 
 \section{Einführung}
@@ -244,14 +244,13 @@ Dieser Tiefpass filtert die hochfrequenten Anteile des Prellens aus dem Tastendr
 
 \section{Entwicklungsumgebung}
 
-Momentan gibt es noch keine freie \autocite{FSF} Entwicklungsumgebung für Xilinx CPLDs, weswegen leider auf proprietäre Software der Firma Xilinx zurück gegriffen werden muss.
- 
+Momentan gibt es noch keine vollumfängliche und freie \autocite{FSF} Entwicklungsumgebung für Xilinx CPLDs, weswegen der Autor auf proprietäre Software der Firma Xilinx zurückgreifen muss.
 Fraglicherweise bietet Xilinx in seiner aktuellen Entwicklungsumgebung „Vivado“ keine Unterstützung für CPLDs an, siehe \autocite[17]{Vivado}. Dennoch ist es möglich, mit der älteren Design Suite „ISE“, Xilinx CPLDs problemlos zu konfigurieren.
-Mit einer Registrierung bei Xilinx erhalten Sie eine kostenlose Lizenz, mit derer Sie die ISE-Demo-Version auf eine Webpack-Version \autocite{ISE-Web} freischalten können. Diese Lizenz ist völlig ausreichend, um alle CPLDs der XC9500 Serie zu konfigurieren.
+Mit einer Registrierung bei Xilinx erhalten Sie eine kostenlose Lizenz, mit derer Sie die ISE-Demo-Version auf eine Webpack-Version \autocite{ISE-Web} freischalten können. Diese Lizenz ist ausreichend, um alle CPLDs der XC9500 Serie ohne Einschränkungen zu konfigurieren.
 
 \section{Die JTAG Schnittstelle via 6 Pin IDC-Header}
 
-Für die Übertragung der Konfigurationsdateien auf den CPLD ist ein 6 Pin IDC-Stecker (JTAG Schnittstelle) im 2.54mm Rastermaß vorgesehen. Die 4 aktiven Leitungen zur Datenübertragung sind:
+Für die Übertragung der HDL Konfigurationsdateien auf den BitConnector ist ein 6 Pin IDC-Stecker (JTAG Schnittstelle) im 2.54mm Rastermaß vorgesehen. Die 4 aktiven JTAG-Leitungen zur Datenübertragung sind:
 
 \begin{enumerate}
 	\item Pin TCK = Test Clock
@@ -287,16 +286,52 @@ In Abbildung \ref{fig:data_cable} erkennen Sie das favorisierte Datenkabel vom B
 
 \vspace{0.5cm}
 
-Falls Sie kein passendes Kabel zur Hand haben, können Sie die herausgeführten JTAG Pins von den beiden Stiftleisten über ein Steckbrett abgreifen. Die passende Pinbelegung können Sie Kapitel \ref{sec:Pins} entnehmen.
-Falls Sie mehrere BitConnectoren auf einer Platine gesockelt haben, bieten sich diese Pins ebenfalls an, um die CPLDs mit nur einer herausgeführten Schnittstelle sequenziell zu konfigurieren.
+Falls Sie kein passendes Kabel zur Hand haben, können Sie die herausgeführten JTAG Pins von den beiden Stiftleisten über ein Steckbrett abgreifen(rote Markierung).
 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.4\linewidth]{Figures/JTAG_Pins}
+	\caption{Die JTAG Schnittstelle, einmal rot umkreist als Stiftleisten und grün umkreist als IDC Header ausgeführt}
+	\label{fig:JTAG_Pins}
+\end{figure}
 
-Für die Ansteuerung der JTAG-Schnittstelle wird ein Programmiergerät benötigt. Dieses gibt es in unterschiedlichen preislichen Ausführungen, wie das standard „Xilinx Platform Cable USB 1/II“, eine kleinere und günstigere Version für Universitäten „XUP USB-JTAG Programming Cable“ oder diverse sehr günstige Nachbauten zum DLC9G oder zum DLC9LP. 
+Sofern Sie mehrere BitConnectoren auf einer Platine gesockelt haben, bieten sich die Pins der Stiftleisten ebenfalls an, um die CPLDs mit nur einer herausgeführten Schnittstelle sequenziell zu konfigurieren.
+\subsection{JTAG Programmiergerät}
+Für die Ansteuerung der JTAG-Schnittstelle wird ein Programmiergerät benötigt. 
+Hier gibt es mehrere Lösungen mit unterschiedlichen Funktionsumfang. Verbreitet sind 4 Versionen des Xilinx Platform Cable USB I/II. Dabei entfallen bereits 3 Versionen auf das Platform Cable I: 
+\begin{itemize}
+	\item \textbf{DLC9G} (neuste Version bezüglich Platform Cable I)
+	\item \textbf{DLC9LP} (Vorgänger des DLC9G)
+	\item \textbf{DLC9} (älteste Version)
+\end{itemize}
+Zu diesen 3 Versionen schreibt Xilinx u.a.: „\textit{The DLC9G and legacy DLC9LP cable models draw less than 100 mA from the host USB port. The legacy DLC9 cable model requires 230 mA to operate in USB 2.0 Hi-Speed mode or 150 mA to operate in USB 2.0/1.1 full-speed mode.}“ \autocite[2]{Platform_Cable}\\\\
+Das Xilinx Platform Cable USB II wird unter der technischen Bezeichnung \textbf{DLC10} gehandelt.
+Die hohen Verbreitung dieser Programmiergeräte hat wohl dazu beigetragen, dass es selbige auch als preisgünstige Nachbauten von anderen Herstellern zu einem Zehntel des Preises zu erwerben gibt.\\
+Als Alternative zum „Platform Cable“ existiert eine kleine und günstigere Variante aus dem „Xilinx University Program“ dass die Bezeichnung „XUP USB-JTAG Programming Cable“ trägt. Sie können es nachfolgend in Abbildung \ref{fig:JTAG_Cable} erkennen. Allerdings scheint diese Variante mit dem heutigen Preisverfall des Platform Cables I/II wenig attraktiv zu sein. Der Vollständigkeit halber soll an dieser Stelle noch das \textbf{DLC7}/Parallel Cable IV erwähnt werden, dass jedoch in der neuen Entwicklungsumgebung von Xilinx/Vivado nicht mehr unterstützt wird \autocite{AR_54136} und aufgrund der „ausgestorbenen“ parallelen Schnittstelle bei Anwendern ebenfalls nur mehr selten anzutreffen sein dürfte.
 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{Figures/JTAG_Programmer}
+	\caption{Beispiel-Programmiergerät: XUP USB-JTAG Programming Cable}
+	\label{fig:JTAG_Cable}
+\end{figure}
 
+\newpage
+\subsection{Offene JTAG Hardware-/Softwarelösungen für Xilinx}
+Es gibt einige Projekte, die sich darum bemühen, alternative und offene JTAG Hardware-/Softwarelösungen für Xlinix Produkte anzubieten.
+Um ein CPLD/FPGA zu konfigurieren, wird ein Mikrocontroller (JTAG-Programmiergerät) benötigt, der den JTAG Standard „IEEE 1149.1“ und eventuelle herstellerspezifische Abweichungen implementiert. 
+Um mit diesem Mikrocontroller kommunizieren zu können, wird weiter eine PC-Software (JTAG Client) benötigt, welche die HDL synthetisierte Konfiguration (im XSVF Format) an diesen Mikrocontroller überträgt. Der Mikrocontroller nimmt letztlich über das vom PC aus übertragene XSVF Format die Konfiguration des CPLD/FPGA mittels JTAG vor.
 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{Figures/iMPACT}
+	\caption{Das proprietäre iMPACT überträgt und verifiziert die HDL Konfiguration (über ein JTAG Programmiergerät) auf dem CPLD oder FPGE}
+	\label{fig:iMPACT}
+\end{figure}
 
-%Die Pins „Global Clock“ und „Global Reset“ sind neben den klassischen I/O Pins Zusatzfunktionen, die erst softwareseitig in der „ISE“ aktiviert werden müssen.
+Um aber auf die offenen Alternativen hinzuweisen, soll hier die Lib(X)SVF von Clifford Wolf\autocite{LibXSVF} Erwähnung finden. Lib(X)SVF ist eine C-Bibliothek zur Implementierung/Umsetzung von JTAG-Programmiergeräten mittels XSVF/SVF Format. Eine konkrete Implementierung ist beispielsweise das „clujtag“ Projekt, wobei clujtag \autocite{clujtag} die Firmware eines einfachen AVR basierten Programmiergeräts bildet und clujtag-client \autocite{clujtag-client} eine kommandozeilenbasierte Alternative zu Xilnix iMPACT darstellt.
+In welchen Umfang diese und andere Projekte heute tragfähig sind, kann der Autor bisher nicht einschätzen.
+
 
 \newpage
 \printbibliography
