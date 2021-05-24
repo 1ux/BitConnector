@@ -15,16 +15,15 @@ Configurations that are present in an HDL/schematic are transmitted via JTAG and
 
 ## Usage & Documentation
 
-Known issues 14.04.2021:
+Known issues 24.05.2021:
 
-The BitConnector is still **struggling with a problematic GND connection to the global clock input pins** (GCK). This affects the 3 GCK pins 1,44 and 43. I will try to fix this problem in an update of the board layout. Sorry for this inconvenience, but I think you should know.
+The BitConnector is still struggling with the problematic global clock input (GCK) pins. This affects the 3 GCK pins 1,44 and 43.
 
 Solution/Workaround:
 
 - Use other input pins for a reliable clock input signal
 - To use the GCK pins as clock input, disable the special globally routed nets as described [here](https://www.xilinx.com/support/documentation/sw_manuals/help/iseguide/mergedProjects/destech/html/cd_using_global_nets.htm).
-- You can try to suppress the problem with a very robust GND connection on the breadboard
-- Do not connect grounded devices on input signal during operation
+- Avoid long signal and test leads (up to 25 cm) to the inputs during operation.
 
 Example experimental setup:
 

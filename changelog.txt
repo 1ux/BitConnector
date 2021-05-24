@@ -1,4 +1,5 @@
 BitConnector v51X:
+	- Optimize the distance between the two pin headers
 	- Optimize the placement of the CPLD by 2 degrees to the left
 	- As a result of the rotation, all data lines now have at least one width of 10 mils (0.254 mm).
 	- Further grounding surfaces were introduced on the top
