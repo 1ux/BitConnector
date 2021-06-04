@@ -15,15 +15,14 @@ Configurations that are present in an HDL/schematic are transmitted via JTAG and
 
 ## Usage & Documentation
 
-Known issues 24.05.2021:
+Like every IC the BitConnector needs a clean operating voltage without ripple.
+In practice, the following methods have proven successful:
 
-The BitConnector is still struggling with the problematic global clock input (GCK) pins. This affects the 3 GCK pins 1,44 and 43.
-
-Solution/Workaround:
-
-- Use other input pins for a reliable clock input signal
-- To use the GCK pins as clock input, disable the special globally routed nets as described [here](https://www.xilinx.com/support/documentation/sw_manuals/help/iseguide/mergedProjects/destech/html/cd_using_global_nets.htm).
+- Protect the Vcc with 100nf and 10nf capacitors against GND.
+- Keep the VCC and GND connections short and stable.
 - Avoid long signal and test leads (up to 25 cm) to the inputs during operation.
+- If you have problems with a clean clock on a GCK pin, disable the special globally routed nets as described [here](https://www.xilinx.com/support/documentation/sw_manuals/help/iseguide/mergedProjects/destech/html/cd_using_global_nets.htm).
+
 
 Example experimental setup:
 
