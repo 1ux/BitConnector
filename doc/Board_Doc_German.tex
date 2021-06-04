@@ -33,7 +33,7 @@
 \setlength{\parindent}{0em} 
 
 \title{Dokumentation des BitConnector v5X}
-\author{Michael Krause \\CC BY-SA 4.0 (except logo)}
+\author{Michael Krause \\CC BY-SA 4.0 }
 
 \date{\today}
 
@@ -269,7 +269,16 @@ Für die Übertragung der HDL Konfigurationsdateien auf den BitConnector ist ein
 \newpage
 
 Die Abbildung \ref{fig:pinheader} zeigt die Draufsicht dieses Steckers, welcher auf dem Board verlötet ist.
-Innerhalb dieser Abbildung erkennen Sie eine „1“, die den ersten Pin markiert. Dieser Pin ist zur Orientierung dem JTAG Test-Takt zugeordnet. Um die Anfertigung eines eigenen Programmierkabels zu erleichtern, wird nachfolgend auch das passende Datenkabel illustriert.
+Innerhalb dieser Abbildung erkennen Sie eine „1“, die den ersten Pin markiert. Dieser Pin ist zur Orientierung dem JTAG Test-Takt zugeordnet. Um die Anfertigung eines eigenen Programmierkabels zu erleichtern, wird nachfolgend auch das passende Datenkabel illustriert. Ich möchte Sie ermutigen, die Anfertigung eines eigenen Kabels nicht zu fürchten. Die Minimalausrüstung sehen sie in Abbildung \ref{fig:cable_equipment}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{Figures/cable_equipment}
+	\caption{Werkzeug und Ribbon Cable + IDC-Stecker zum selber crimpen}
+	\label{fig:cable_equipment}
+\end{figure}
+
+Da es mehrere Programmiergerät gibt, existieren somit mehrere Stecker-Möglichkeiten und Adapter.  In Abbildung \ref{fig:data_cable} erkennen Sie ein mögliches Datenkabel vom BitConnector zum Programmiergerät. Anders als in Abbildung \ref{fig:pinheader}, ist der 6 Pin Connector diesmal als Buchse ausgeführt und somit gespiegelt.
 
 \begin{figure}[!h]
 	\centering
@@ -278,13 +287,15 @@ Innerhalb dieser Abbildung erkennen Sie eine „1“, die den ersten Pin markier
 	\label{fig:data_cable}
 \end{figure}
 
-In Abbildung \ref{fig:data_cable} erkennen Sie das favorisierte Datenkabel vom BitConnector zum Programmiergerät. Anders als in Abbildung \ref{fig:pinheader}, ist der 6 Pin Connector diesmal als Buchse ausgeführt und somit gespiegelt. Bei dem HW-RIBBON14 female connector hat sich Xilinx für eine eher exotische Buchse im 2 mm Raster entschieden. Die Kette des Datenkabels sieht abstrakt zusammen gefasst folgendermaßen aus:
+Bei dem HW-RIBBON14 female connector hat sich Xilinx für eine eher exotische Buchse entschieden. Die Kette des Datenkabels sieht abstrakt zusammen gefasst folgendermaßen aus:
 \vspace{0.5cm}
 \begin{center}
 	PC<->USB-Kable<->Programmierer<->Programmierkabel<->BitConnector
 \end{center}
 
 \vspace{0.5cm}
+
+\newpage
 
 Falls Sie kein passendes Kabel zur Hand haben, können Sie die herausgeführten JTAG Pins von den beiden Stiftleisten über ein Steckbrett abgreifen(rote Markierung).
 
@@ -304,19 +315,26 @@ Hier gibt es mehrere Lösungen mit unterschiedlichen Funktionsumfang. Verbreitet
 	\item \textbf{DLC9LP} (Vorgänger des DLC9G)
 	\item \textbf{DLC9} (älteste Version)
 \end{itemize}
+
+\newpage
+
 Zu diesen 3 Versionen schreibt Xilinx u.a.: „\textit{The DLC9G and legacy DLC9LP cable models draw less than 100 mA from the host USB port. The legacy DLC9 cable model requires 230 mA to operate in USB 2.0 Hi-Speed mode or 150 mA to operate in USB 2.0/1.1 full-speed mode.}“ \autocite[2]{Platform_Cable}\\\\
-Das Xilinx Platform Cable USB II wird unter der technischen Bezeichnung \textbf{DLC10} gehandelt.
-Die hohen Verbreitung dieser Programmiergeräte hat wohl dazu beigetragen, dass es selbige auch als preisgünstige Nachbauten von anderen Herstellern zu einem Zehntel des Preises zu erwerben gibt.\\
-Als Alternative zum „Platform Cable“ existiert eine kleine und günstigere Variante aus dem „Xilinx University Program“ dass die Bezeichnung „XUP USB-JTAG Programming Cable“ trägt. Sie können es nachfolgend in Abbildung \ref{fig:JTAG_Cable} erkennen. Allerdings scheint diese Variante mit dem heutigen Preisverfall des Platform Cables I/II wenig attraktiv zu sein. Der Vollständigkeit halber soll an dieser Stelle noch das \textbf{DLC7}/Parallel Cable IV erwähnt werden, dass jedoch in der neuen Entwicklungsumgebung von Xilinx/Vivado nicht mehr unterstützt wird \autocite{AR_54136} und aufgrund der „ausgestorbenen“ parallelen Schnittstelle bei Anwendern ebenfalls nur mehr selten anzutreffen sein dürfte.
+Das Xilinx Platform Cable USB II wird momentan unter der Versionsbezeichnung „\textbf{DLC10}“ gehandelt.
+Die hohen Verbreitung dieser Programmiergeräte hat dazu beigetragen, dass es selbige auch als preisgünstige Nachbauten von anderen Herstellern zu einem Zehntel des Preises gibt.
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=1\linewidth]{Figures/JTAG_Programmer}
-	\caption{Beispiel-Programmiergerät: XUP USB-JTAG Programming Cable}
+	\includegraphics[width=1\linewidth]{Figures/JTAG_Programmer_uebersicht}
+	\caption{oben: XUP USB-JTAG Programming Cable
+		\\\hspace*{2cm} unten: Platform Cable USB II DLC10}
 	\label{fig:JTAG_Cable}
 \end{figure}
 
+Als Alternative zum „Platform Cable I/II“ existiert eine kleine und günstigere Variante aus dem „Xilinx University Program“ dass die Bezeichnung „XUP USB-JTAG Programming Cable“ trägt. Sie können es nachfolgend in Abbildung \ref{fig:JTAG_Cable} erkennen. Allerdings scheint diese Variante mit dem heutigen Preisverfall des Platform Cables I/II wenig attraktiv zu sein. 
+Der Vollständigkeit halber soll an dieser Stelle noch das \textbf{DLC7}/Parallel Cable IV erwähnt werden, dass jedoch in der neuen Entwicklungsumgebung von Xilinx/Vivado nicht mehr unterstützt wird \autocite{AR_54136} und aufgrund der „ausgestorbenen“ parallelen Schnittstelle bei Anwendern ebenfalls nur mehr selten anzutreffen sein dürfte. Wenn Sie keinen Wert auf Zusatzfunktionen wie „SPI PROM Support, ChipScope oder AES-Cryptographic“ legen, sollte die Wahl des Programmers eine untergeordnete Rolle spielen.
+
 \newpage
+
 \subsection{Offene JTAG Hardware-/Softwarelösungen für Xilinx}
 Es gibt einige Projekte, die sich darum bemühen, alternative und offene JTAG Hardware-/Softwarelösungen für Xlinix Produkte anzubieten.
 Um ein CPLD/FPGA zu konfigurieren, wird ein Mikrocontroller (JTAG-Programmiergerät) benötigt, der den JTAG Standard „IEEE 1149.1“ und eventuelle herstellerspezifische Abweichungen implementiert. 
@@ -324,7 +342,7 @@ Um mit diesem Mikrocontroller kommunizieren zu können, wird weiter eine PC-Soft
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=1\linewidth]{Figures/iMPACT}
+	\includegraphics[width=0.8\linewidth]{Figures/iMPACT}
 	\caption{Das proprietäre iMPACT überträgt und verifiziert die HDL Konfiguration (über ein JTAG Programmiergerät) auf dem CPLD oder FPGE}
 	\label{fig:iMPACT}
 \end{figure}
