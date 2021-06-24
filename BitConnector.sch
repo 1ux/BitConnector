@@ -5,8 +5,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "XC95## VQ44 to DIP 40"
-Date "2021-02-01"
-Rev "v04X"
+Date "2021-06-23"
+Rev "v05Xe"
 Comp ""
 Comment1 ""
 Comment2 "creativecommons.org/licenses/by-sa/4.0/"
@@ -131,32 +131,32 @@ Wire Wire Line
 Wire Wire Line
 	4600 5200 4600 4750
 Text Label 9950 3800 0    50   ~ 0
-GP_IO_24
+GPIO_34GTS2
 Text Label 9950 3700 0    50   ~ 0
-GP_IO_25
+GPIO_36GTS1
 Text Label 9950 3600 0    50   ~ 0
-GP_IO_26
+GPIO_37
 Text Label 9950 3500 0    50   ~ 0
-GP_IO_27
+GPIO_38
 Text Label 9950 3400 0    50   ~ 0
-GP_IO_28
+GPIO_39
 Text Label 9950 3300 0    50   ~ 0
-GP_IO_29
+GPIO_40
 Text Label 9950 3200 0    50   ~ 0
-GP_IO_30
+GPIO_41
 Text Label 9950 3100 0    50   ~ 0
-GP_IO_31
+GPIO_42
 Text Label 9950 3000 0    50   ~ 0
-GP_IO_32
+GPIO_43GCK1
 Wire Notes Line width 20 style solid
 	8400 2100 11150 2100
 Text Notes 8450 2250 0    79   ~ 0
 2.54mm DIP pin bar left and right
 $Comp
-L Connector_Generic:Conn_01x20 DIP_20_l1
+L Connector_Generic:Conn_01x20 PR_1
 U 1 1 5C39D223
 P 9650 3600
-F 0 "DIP_20_l1" H 9250 4700 50  0000 L CNN
+F 0 "PR_1" H 9250 4700 50  0000 L CNN
 F 1 "Conn_01x20" H 9150 4800 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x20_P2.54mm_Vertical" H 9650 3600 50  0001 C CNN
 F 3 "~" H 9650 3600 50  0001 C CNN
@@ -164,10 +164,10 @@ F 3 "~" H 9650 3600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x20 DIP_20_r1
+L Connector_Generic:Conn_01x20 GPIO_27
 U 1 1 5C39F10C
 P 9750 3600
-F 0 "DIP_20_r1" H 9300 4700 50  0000 L CNN
+F 0 "GPIO_27" H 9300 4700 50  0000 L CNN
 F 1 "Conn_01x20" H 9250 4800 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x20_P2.54mm_Vertical" H 9750 3600 50  0001 C CNN
 F 3 "~" H 9750 3600 50  0001 C CNN
@@ -390,113 +390,109 @@ F 3 "" H 4450 5600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 4550 2950 0    50   ~ 0
-GP_IO_31
+GPIO_42
 Text Label 4550 2850 0    50   ~ 0
-GP_IO_32
+GPIO_43GCK1
 Text Label 4550 2750 0    50   ~ 0
-GP_IO_33
+GPIO_44GCK2
 Text Label 2350 3150 2    50   ~ 0
-GP_IO_7
+GPIO_8
 Text Label 2350 2650 2    50   ~ 0
-GP_IO_2
+GPIO_2
 Text Label 2350 2750 2    50   ~ 0
-GP_IO_3
+GPIO_3
 Text Label 2350 2950 2    50   ~ 0
-GP_IO_5
+GPIO_6
 Text Label 2350 2850 2    50   ~ 0
-GP_IO_4
+GPIO_5
 Text Label 2350 3250 2    50   ~ 0
-GP_IO_8
+GPIO_12
 Text Label 2350 3050 2    50   ~ 0
-GP_IO_6
+GPIO_7
 Text Label 2350 3350 2    50   ~ 0
-GP_IO_9
+GPIO_13
 Text Label 2350 3450 2    50   ~ 0
-GP_IO_10
+GPIO_14
 Text Label 2350 3550 2    50   ~ 0
-GP_IO_11
+GPIO_16
 Text Label 2350 3650 2    50   ~ 0
-GP_IO_12
-Text Label 2350 3750 2    50   ~ 0
-GP_IO_13
+GPIO_18
 Text Label 2350 3850 2    50   ~ 0
-GP_IO_14
+GPIO_20
 Text Label 2350 3950 2    50   ~ 0
-GP_IO_15
+GPIO_21
 Text Label 9450 3600 2    50   ~ 0
-GP_IO_10
+GPIO_14
 Text Label 9450 2800 2    50   ~ 0
-GP_IO_2
+GPIO_2
 Text Label 9450 2900 2    50   ~ 0
-GP_IO_3
+GPIO_3
 Text Label 9450 3000 2    50   ~ 0
-GP_IO_4
+GPIO_5
 Text Label 9450 3100 2    50   ~ 0
-GP_IO_5
+GPIO_6
 Text Label 9450 3200 2    50   ~ 0
-GP_IO_6
+GPIO_7
 Text Label 9450 3300 2    50   ~ 0
-GP_IO_7
+GPIO_8
 Text Label 9450 3400 2    50   ~ 0
-GP_IO_8
+GPIO_12
 Text Label 9450 3800 2    50   ~ 0
-GP_IO_12
+GPIO_18
 Text Label 9450 3900 2    50   ~ 0
-GP_IO_13
+GPIO_19
 Text Label 9450 4000 2    50   ~ 0
-GP_IO_14
+GPIO_20
 Text Label 9450 4100 2    50   ~ 0
-GP_IO_15
+GPIO_21
 Text Label 9450 4200 2    50   ~ 0
-GP_IO_16
+GPIO_22
 Wire Wire Line
 	9450 4600 9150 4600
 Text Label 9450 4300 2    50   ~ 0
-GP_IO_17
+GPIO_23
 Text Label 9950 4400 0    50   ~ 0
-GP_IO_18
-Text Label 9450 2700 2    50   ~ 0
-CLK_GP_IO_1
+GPIO_27
 Text Label 9950 4300 0    50   ~ 0
-GP_IO_19
+GPIO_28
 Text Label 9950 4200 0    50   ~ 0
-GP_IO_20
+GPIO_29
 Text Label 9950 4100 0    50   ~ 0
-GP_IO_21
+GPIO_30
 Text Label 4550 4250 0    50   ~ 0
-GP_IO_19
+GPIO_28
 Text Label 9950 3900 0    50   ~ 0
-GP_IO_23
+GPIO_32
 Text Label 2350 4050 2    50   ~ 0
-GP_IO_16
+GPIO_22
 Text Label 2350 4150 2    50   ~ 0
-GP_IO_17
+GPIO_23
 Text Label 2350 4250 2    50   ~ 0
-GP_IO_18
+GPIO_27
 Text Label 9950 4000 0    50   ~ 0
-GP_IO_22
+GPIO_31
 Text Label 4550 4150 0    50   ~ 0
-GP_IO_20
+GPIO_29
 Text Label 4550 4050 0    50   ~ 0
-GP_IO_21
+GPIO_30
 Text Label 4550 3950 0    50   ~ 0
-GP_IO_22
+GPIO_31
 Text Label 4550 3850 0    50   ~ 0
-GP_IO_23
+GPIO_32
 Text Label 4550 3650 0    50   ~ 0
-GP_IO_24
+GPIO_34GTS2
 Text Label 4550 3550 0    50   ~ 0
-GP_IO_25
+GPIO_36GTS1
 Text Label 4550 3450 0    50   ~ 0
-GP_IO_26
+GPIO_37
 Text Label 4550 3350 0    50   ~ 0
-GP_IO_27
+GPIO_38
 Text Label 4550 3250 0    50   ~ 0
-GP_IO_28
+GPIO_39
 Text Label 9450 3500 2    50   ~ 0
-GP_IO_9
+GPIO_13
 Text Label 9450 3700 2    50   ~ 0
-GP_IO_11
+GPIO_16
 Text Label 9950 4500 0    50   ~ 0
 JTAG_TDI
 Text Label 9950 4600 0    50   ~ 0
@@ -506,22 +502,22 @@ JTAG_TCK
 Text Label 9450 4500 2    50   ~ 0
 JTAG_TDO
 Text Label 4550 2650 0    50   ~ 0
-CLK_GP_IO_1
+GPIO_1GCK3
 Text Label 4550 3150 0    50   ~ 0
-GP_IO_29
+GPIO_40
 Wire Wire Line
 	2350 3150 2750 3150
 Text Label 4550 3050 0    50   ~ 0
-GP_IO_30
+GPIO_41
 Wire Wire Line
 	4150 3050 4550 3050
 Text Label 9950 2900 0    50   ~ 0
-GP_IO_33
+GPIO_44GCK2
 $Comp
-L XC96xxxl:Xilinx_CPLD_VQFP_2_DIP-rescue_XC9536XL-VQ44-Xilinx-VQ44-Xilinx_CPLD_VQFP_2_DIP-rescue-BitConnector-BitConnector-rescue-BitConnector-rescue U1
+L XC96xxxl:Xilinx_CPLD_VQFP_2_DIP-rescue_XC9536XL-VQ44-Xilinx-VQ44-Xilinx_CPLD_VQFP_2_DIP-rescue-BitConnector-BitConnector-rescue-BitConnector-rescue CPLD1
 U 1 1 5C7597D2
 P 3450 3850
-F 0 "U1" H 3450 4550 50  0000 C CNN
+F 0 "CPLD1" H 3450 4550 50  0000 C CNN
 F 1 "XC95##XL-VQ44" H 3450 4450 50  0000 C CNN
 F 2 "Package_QFP:LQFP-44_10x10mm_P0.8mm" H 3450 3850 50  0001 C CNN
 F 3 "xilinx/xc9536.pdf" H 3450 3850 50  0001 C CNN
@@ -592,10 +588,10 @@ alternative: use 2.54 mm long Pin Socket instad of PinHeader
 Text Notes 8450 1350 0    50   ~ 0
 In consideration of the adaptability was waived a voltage regulator.
 $Comp
-L Connector_Generic:Conn_02x03_Odd_Even J1
+L Connector_Generic:Conn_02x03_Odd_Even H1
 U 1 1 5D841E29
 P 9750 6000
-F 0 "J1" H 9800 6317 50  0000 C CNN
+F 0 "H1" H 9800 6317 50  0000 C CNN
 F 1 "JTAG" H 9800 6226 50  0000 C CNN
 F 2 "Connector_IDC:IDC-Header_2x03_P2.54mm_Vertical" H 9750 6000 50  0001 C CNN
 F 3 "~" H 9750 6000 50  0001 C CNN
@@ -661,10 +657,10 @@ Wire Wire Line
 Wire Wire Line
 	5000 1900 5000 850 
 $Comp
-L Connector_Generic:Conn_01x02 J2
+L Connector_Generic:Conn_01x02 PR_3
 U 1 1 5DC15FDD
 P 6450 1550
-F 0 "J2" V 6322 1630 50  0000 L CNN
+F 0 "PR_3" V 6322 1630 50  0000 L CNN
 F 1 "Conn_01x02" V 6413 1630 50  0000 L CNN
 F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 6450 1550 50  0001 C CNN
 F 3 "~" H 6450 1550 50  0001 C CNN
@@ -692,10 +688,10 @@ F 3 "~" H 6300 2150 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L 74xGxx:74LVC2G14 U2
+L 74xGxx:74LVC2G14 NOT_1
 U 1 1 5DBBF222
 P 5800 1900
-F 0 "U2" H 5775 1633 50  0000 C CNN
+F 0 "NOT_1" H 5775 1633 50  0000 C CNN
 F 1 "74LVC2G14" H 5775 1724 50  0000 C CNN
 F 2 "Package_SO:SC-74-6_1.5x2.9mm_P0.95mm" H 5800 1900 50  0001 C CNN
 F 3 "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf" H 5800 1900 50  0001 C CNN
@@ -703,10 +699,10 @@ F 3 "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf" H 5800 1900 50  0001 C C
 	-1   0    0    1   
 $EndComp
 $Comp
-L 74xGxx:74LVC2G14 U2
+L 74xGxx:74LVC2G14 NOT_1
 U 2 1 5DB3A7BA
 P 6050 3750
-F 0 "U2" H 6025 4017 50  0000 C CNN
+F 0 "NOT_1" H 6025 4017 50  0000 C CNN
 F 1 "74LVC2G14" H 6025 3926 50  0000 C CNN
 F 2 "Package_SO:SC-74-6_1.5x2.9mm_P0.95mm" H 6050 3750 50  0001 C CNN
 F 3 "https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf" H 6050 3750 50  0001 C CNN
@@ -752,10 +748,10 @@ Connection ~ 7050 4550
 Wire Wire Line
 	6350 4550 7050 4550
 $Comp
-L Jumper:SolderJumper_2_Open JP1
+L Jumper:SolderJumper_2_Open J1
 U 1 1 5DB867A4
 P 6550 3000
-F 0 "JP1" H 6550 3205 50  0000 C CNN
+F 0 "J1" H 6550 3205 50  0000 C CNN
 F 1 "disable_schmitt_trigger_action" H 6550 3114 50  0000 C CNN
 F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 6550 3000 50  0001 C CNN
 F 3 "~" H 6550 3000 50  0001 C CNN
@@ -920,4 +916,8 @@ $EndComp
 Connection ~ 3350 2300
 Wire Wire Line
 	3350 2300 3350 2450
+Text Label 9450 2700 2    50   ~ 0
+GPIO_1GCK3
+Text Label 2350 3750 2    50   ~ 0
+GPIO_19
 $EndSCHEMATC
