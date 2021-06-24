@@ -32,7 +32,7 @@ Example experimental setup:
 - here is the preview for the [schematic](./BitConnector/doc/schematic_v5Xe.pdf)
 - files for board production have also been published in [Gerber](./BitConnector/gerbers/gerbers_v5Xe.zip) format
 - for a revision overview check: [changelog](./BitConnector/changelog.txt)
-- for all other questions, [there](https://github.com/1ux/BitConnector/archive/master.zip) is a KiCad project
+- for all other questions, study the Kicad project.
 
 |    |           |          |           |            |          |                   |
 | :- | :-------: | :------: | :-------- | :--------: | :------: | :---------------- |

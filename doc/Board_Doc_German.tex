@@ -32,7 +32,7 @@
 
 \setlength{\parindent}{0em} 
 
-\title{Dokumentation des BitConnector v5X}
+\title{Dokumentation des BitConnector v5Xe}
 \author{Michael Krause \\CC BY-SA 4.0 }
 
 \date{\today}
@@ -61,7 +61,7 @@ Die noch immer andauernden Bemühungen der mikrokosmischen Minimierung von integ
 \begin{wrapfigure}[14]{l}{0.50\textwidth}
 		\vspace { -15pt }
 	\includegraphics[scale=0.3]{BitConnector6P} 
-	\caption{BitConnector v5X}
+	\caption{BitConnector v5Xe\\ IO-Pins = general-purpose input/output}
 	\label{fig:}
 \end{wrapfigure}
 
@@ -88,7 +88,7 @@ Absolute, maximale Belastbarkeit:
 
 Es wird empfohlen, Spannungen über und unter 3,3V($\pm 0,3V$) zu vermeiden!
 
-\section{Pinbelegung BitConnector v5X}
+\section{Pinbelegung BitConnector v5Xe}
 \label{sec:Pins}
 
 \begin{minipage}{0.55\textwidth}
@@ -144,8 +144,8 @@ Es wird empfohlen, Spannungen über und unter 3,3V($\pm 0,3V$) zu vermeiden!
 	\end{tabular}
 \end{minipage}
 \\\\\\
-Pin 33 ist an dem Taster SW1 fest verdrahtet, zudem ist Pin 33 auch GRS
-(GSR=Global Reset, GTS=Global Tri-State, GCK=Global Clock).
+CPLD-Pin 33 ist an dem Taster SW1 fest verdrahtet, zudem ist CPLD-Pin 33 auch GRS
+(GRS=Global Reset, GTS=Global Tri-State, GCK=Global Clock).
 %GPIO (General Purpose Input/Output)
 \newpage
 
@@ -235,10 +235,43 @@ Der Wert $I_{max}$ sagt aus, dass bei einer I/O-Spannung von 1,85V und einer Str
 Bitte verlassen Sie sich nicht auf die angegebene Berechnung und überprüfen Sie auch die Quellen. Sollten Sie einen Fehler finden, wäre ich Ihnen sehr dankbar, wenn Sie mich diesbezüglich kontaktieren.
 
 \section{Hardware Entprellung}
-Gelegentlich ist es sehr wichtig, eine getaktete, sequenzielle Schaltung schrittweise, manuell über einen Taster zu durchlaufen. Leider erzeugen so ziemlich alle handelsüblichen Taster ein Prellen. Ein solches Prellen führt zu einer undefinierten Abfolge von Signalimpulsen. Da Sie bei CPLDs prinzipiell mit Ihren Flip-Flop-Ressourcen sehr haushalten müssen, wurde für den BitConnector eine Hardwareentprellung vorgesehen. Sofern Ihre Ausführung mit dem 74LVC2G14 IC bestückt ist, ist der Taster SW1 auf dem Board automatisch entprellt. Sollte dies nicht der Fall sein, so können Sie auf Grundlage der nachfolgenden Erläuterungen, eine eigene Hardwareentprellung nachschalten.
+Gelegentlich ist es sehr hilfreich, eine getaktete, sequenzielle Schaltung schrittweise über das Drücken eines Taster zu durchlaufen. Leider erzeugen so ziemlich alle handelsüblichen Taster ein sogenanntes „Prellen“, da die Kontakte des Tasters nicht sauber schließen oder öffnen. Ein solches Prellen führt zu einer unvorhersagbaren Abfolge von Signalimpulsen. Schauen Sie sich hierfür einmal die Abbildung \ref{fig:prellen_1} genauer an. 
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\linewidth]{Figures/bounce}
+	\caption{Tastendruck am BitConnector ohne Entprellung}
+	\label{fig:prellen_1}
+\end{figure}
+
+Hier wird ein einfacher Tastendruck über ein Oszillogramm grafisch veranschaulicht. Interessant ist der Bereich der fallende Flanke ab 80 Millisekunden, also ungefähr an der Stelle, an dem der Taster wieder losgelassen wird. Wenn Sie diesen Bereich kritisch betrachten, werden Sie bemerken, dass es bei ungefähr 92 Millisekunden bereits einen ungewollten Wechsel der Signalflanke gibt. Lassen Sie uns diesen Bereich mit der „Lupe“ in Abbildung \ref{fig:prellen_2} etwas näher betrachten.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\linewidth]{Figures/bounce_near}
+	\caption{Nahaufnahme der fallenden Flanke aus Abbildung \ref{fig:prellen_1}}
+	\label{fig:prellen_2}
+\end{figure}
+
+Sie erkennen deutlich, dass der Signalpegel in Abbildung \ref{fig:prellen_2} bereits bei ungefähr 2 Millisekunden hin und herspringt und somit mehrere Flanken erzeugt. Diese Signalflanken sind gerade bei sequenziellen Schaltungen, die auf fallende oder steigende Flanken reagieren problematisch. Eine einfache Zählerschaltung, die mit jedem Tastendruck „1“ hinzu addiert, wird augenscheinlich nicht funktionieren. So scheint es, als würde der Zähler einzelne Zählschritte beim Drücken oder beim Loslassen des Tasters überspringen. Mit einem höherwertigen Oszilloskop ließe sich der problematische Bereich noch näher untersuchen, was weitere Taktwechsel und somit weitere Zählimpulse mit nur einem Tastendruck aufdecken könnte. 
+Da Sie bei CPLDs prinzipiell mit Ihren Flip-Flop-Ressourcen sehr haushalten müssen und keinen Mikrocontroller für eine Entprellroutine haben, wurde für den BitConnector eine Hardwareentprellung vorgesehen. 
+
+\newpage
+
+Sollte Ihr BitConnector mit dem 74LVC2G14 IC bestückt sein, so ist auch der Taster SW1 automatisch entprellt. Ein Tastendruck sollte dann wie in Abbildung \ref{fig:prellen_3} eine einzige und saubere Flanke erzeugen. 
+
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\linewidth]{Figures/debounce}
+	\caption{Tastendruck am BitConnector mit Hardware-Entprellung}
+	\label{fig:prellen_3}
+\end{figure}
+
+Sollte dies nicht der Fall sein, so können Sie auf Grundlage der nachfolgenden Erläuterungen eine eigene Hardwareentprellung nachschalten.
 \subsection{Prinzip der Hardwareentprellung}
-Da die vom Menschen erzeugten Frequenzen der Tastendrücke im Vergleich zum Prellen des Tasters sehr niedrig sind, wurde ein Tiefpassfilter in Form eines RC-Gliedes dem Taster nachgeschaltet. 
-Dieser Tiefpass filtert die hochfrequenten Anteile des Prellens aus dem Tastendruck heraus. Das Prellen ist verschwunden. Es entsteht allerdings ein neues Problem. Da ein RC-Glied naturgemäß aus einem Widerstand und einem Kondensator besteht, durchläuft dieser Kondensator eine Ladespannung, die dem natürlichen Logarithmus sehr nahe kommt (siehe beispielsweise \autocite{RC}). Eine digitale Schaltung auf CMOS-Basis benötigt jedoch eine steile Signalflanke, also beispielsweise einen Signalwechsel von 0V auf direkt 3,3V. Andernfalls besteht die Gefahr, dass die Schaltung in einen undefinierten Zustand abrutscht. Auf Transistorebene kann dieser undefinierte Zustand sehr gefährlich sein, da eine Transistorkonstellation, die es theoretisch so nicht geben sollte, plötzlich anfangen kann, den Strom zu leiten. Zudem werden Sie immer noch keinen auswertbaren Tastenimpuls erwarten können. Es ist daher zwingend anzuraten, diese undefinierten Signalzustände in digitalen Schaltungen zu vermeiden. Dies geschieht hier mit Hilfe eines Schmitt-Triggers. Der Schmitt-Trigger soll verkürzt dargestellt, den undefinierten Spannungsbereich auf einen definierten high- oder low- Pegel zurück bringen. Die charakteristische Hysterese eines Schmitt-Triggers ist dafür verantwortlich, den undefinierten Spannungsbereich zu vermeiden. Sie können sich den Schmitt-Trigger in diesem Fall als den „eigentlichen Schalter“ vorstellen, der am Ausgang immer einen steilen Pegel schaltet, während er am Eingang eine Kondenstorkennlinie „sieht“.
+Da die vom Menschen erzeugten Frequenzen der Tastendrücke im Vergleich zum Prellen des Tasters sehr niedrig sind, ist es naheliegend einen Tiefpassfilter in Form eines RC-Gliedes dem Taster vorzuschalten. 
+Dieser Tiefpass filtert die hochfrequenten Anteile des Prellens aus dem Tastendruck heraus. Das Prellen ist verschwunden. Es entsteht allerdings ein neues Problem. Da ein RC-Glied naturgemäß aus einem Widerstand und einem Kondensator besteht, durchläuft dieser Kondensator eine Ladespannung, die dem natürlichen Logarithmus sehr nahe kommt \autocite{RC}. Eine digitale Schaltung auf CMOS-Basis benötigt jedoch eine steile Signalflanke, also beispielsweise einen Signalwechsel von 0V auf direkt 3,3V. Andernfalls besteht die Gefahr, dass die Schaltung eine gewisse Zeit einen undefinierten Zustand annimmt. Auf Transistorebene kann dieser undefinierte Zustand gefährlich sein, da eine Transistorkonstellation, die es theoretisch so nicht geben sollte, plötzlich anfangen kann, den Strom zu leiten. Zudem werden Sie immer noch keine Freude beim auswerten des Tastenimpuls haben. Es ist daher nachdrücklich anzuraten, diese undefinierten Signalzustände in digitalen Schaltungen zu vermeiden. Dies geschieht hier mit Hilfe eines Schmitt-Triggers. Der Schmitt-Trigger soll verkürzt dargestellt, den undefinierten Spannungsbereich vor dem digitalen Eingang einer Schaltung über eine sogenannte „charakteristische Hysterese“ vermeiden. Sie können sich den Schmitt-Trigger in diesem Fall als den „eigentlichen Schalter“ vorstellen, der an seinem Ausgang immer einen steilen Pegel schaltet, während er am Eingang eine Kondenstorkennlinie „sieht“.
 %Grafiken (Auch Schaltplan) und Berechnungen einfügen.
 
 

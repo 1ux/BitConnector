@@ -1,9 +1,10 @@
-BitConnector v51X:
+BitConnector v5Xe:
 	- Optimize the distance between the two pin headers
 	- Optimize the placement of the CPLD by 2 degrees to the left
 	- As a result of the rotation, all data lines now have at least one width of 10 mils (0.254 mm).
 	- Further grounding surfaces were introduced on the top
 	- Turn decoupling capacitors to bring them closer to VCC
+	- PCB pin label now contains the CPLD pins
 
 BitConnector v5X:
 	- switch solder pad for resistors from 1.15mm to 1.20mm
