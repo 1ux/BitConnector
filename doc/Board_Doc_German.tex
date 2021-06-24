@@ -61,7 +61,7 @@ Die noch immer andauernden Bemühungen der mikrokosmischen Minimierung von integ
 \begin{wrapfigure}[14]{l}{0.50\textwidth}
 		\vspace { -15pt }
 	\includegraphics[scale=0.3]{BitConnector6P} 
-	\caption{BitConnector v5Xe\\ IO-Pins = general-purpose input/output}
+	\caption{BitConnector v5Xe}
 	\label{fig:}
 \end{wrapfigure}
 
@@ -72,7 +72,7 @@ Der BitConnector ist ein \textbf{C}omplex \textbf{P}rogrammable \textbf{L}ogic \
 
 BitConnector Board-Spezifikation
 \begin{itemize}
-	\item \textit{Anzahl der frei beschaltbaren Ein/Ausgänge:} \hspace{0.3cm} 33
+	\item \textit{Anzahl der frei beschaltbaren Ein/Ausgänge:} \hspace{0.3cm} 33 GPIOs\footnote{\textbf{GPIO}=General Purpose In/Output, \textbf{GRS}=Global Reset, \textbf{GTS}=Global Tri-State, \textbf{GCK}=Global Clock, \textbf{TDI}=Test Data In, \textbf{TDO}=Test Data Out, \textbf{TCK}=Test Clk, \textbf{TMS}=Test Mode Select, \textbf{V\textsubscript{INT}}=Supply voltage internal logic, \textbf{V\textsubscript{IO}}=Supply voltage output driver} und ein Taster
 	\item \textit{Gesamtanzahl der Pins:} \hspace{3.6cm} 2 Reihen * 20 Pins (2,54mm)
 	\item \textit{kompatible CPLD-Varianten}: \hspace{2.8cm} XC95\textbf{72}XL sowie XC95\textbf{36}XL
 	\item Max. Produktterme: \hspace{4.1cm} 1600 bei 72XL/800 bei~36XL
@@ -91,62 +91,63 @@ Es wird empfohlen, Spannungen über und unter 3,3V($\pm 0,3V$) zu vermeiden!
 \section{Pinbelegung BitConnector v5Xe}
 \label{sec:Pins}
 
-\begin{minipage}{0.55\textwidth}
+\begin{minipage}{0.54\textwidth}
 	%\begin{table}[h]
-	\begin{tabular}{l|c|c|l}
-		Nr & DIP-links	& CPLD-Pin & Bemerkung\\
-		\rowcolor[gray]{.8}	1 & CLK		& 1 &	GCK3\\
-		2 & IO2		& 2 &\\
-		\rowcolor[gray]{.8}	3 & IO3		& 3 &\\
-		4 & IO4		& 5 &\\
-		\rowcolor[gray]{.8}	5 & IO5		& 6 &\\
-		6 & IO6		& 7 &\\
-		\rowcolor[gray]{.8}	7 & IO7		& 8 &\\
-		8 & IO8		& 12 &\\
-		\rowcolor[gray]{.8}	9 & IO9		& 13 &\\
-		10 & IO10	& 14 &\\
-		\rowcolor[gray]{.8}	11 & IO11	& 16 &\\
-		12 & IO12	& 18 &\\
-		\rowcolor[gray]{.8}	13 & IO13	& 19 &\\
-		14 & IO14	& 20 &\\
-		\rowcolor[gray]{.8}	15 & IO15	& 21 &\\
-		16 & IO16	& 22 &\\
-		\rowcolor[gray]{.8}	17 & IO17	& 23 &\\
-		18 & TCK		& 11 &	JTAG\\
-		\rowcolor[gray]{.8}	19 & TDO		& 24 &	JTAG\\	
-		20 & GND		& 17,25,4 & 	 
+	\begin{tabular}{c|c|c}
+		DIP-links & CPLD Pin & Funktion\\
+		\rowcolor[gray]{.8}	1 & 1 &	GPIO\footnotemark[1], GCK3\footnotemark[1]\\
+		2 & 2 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	3 & 3 & GPIO\footnotemark[1]\\
+		4 & 5 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	5 & 6 & GPIO\footnotemark[1]\\
+		6 & 7 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	7 & 8 & GPIO\footnotemark[1]\\
+		8 & 12 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	9 & 13 & GPIO\footnotemark[1]\\
+		10 & 14 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	11 & 16 & GPIO\footnotemark[1]\\
+		12 &  18 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	13 & 19 & GPIO\footnotemark[1]\\
+		14 & 20 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	15 & 21 & GPIO\footnotemark[1]\\
+		16 & 22 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	17 & 23 & GPIO\footnotemark[1]\\
+		18 & 11 & TCK\footnotemark[1] JTAG\\
+		\rowcolor[gray]{.8}	19 & 24 & TDO\footnotemark[1] JTAG\\	
+		20 & 17,25,4 & GND
 	\end{tabular}
 	%\end{table}
 \end{minipage}
 \begin{minipage}{0.2\textwidth}
-	\begin{tabular}{||c|c|l}
-		DIP-rechts	& CPLD-Pin & Bemerkung\\
-		\rowcolor[gray]{.8}	3V3		& 15,35 &	V\textsubscript{ccINT} \\
-		VCC		& 26 & 		V\textsubscript{ccIO}\\
-		\rowcolor[gray]{.8}	IO33	& 44 &		GCK2\\
-		IO32	& 43 &		GCK1\\
-		\rowcolor[gray]{.8}	IO31	& 42 &\\
-		IO30	& 41 &\\
-		\rowcolor[gray]{.8}	IO29	& 40 &\\
-		IO28	& 39 &\\
-		\rowcolor[gray]{.8}	IO27	& 38 &\\
-		IO26	& 37 &\\
-		\rowcolor[gray]{.8}	IO25	& 36 &		GTS1\\
-		IO24	& 34 &							GTS2\\
-		\rowcolor[gray]{.8}	IO23	& 32 &\\
-		IO22	& 31 &\\
-		\rowcolor[gray]{.8}	IO21	& 30 &\\
-		IO20	& 29 &\\
-		\rowcolor[gray]{.8}	IO19	& 28 &\\
-		IO18	& 27 &\\
-		\rowcolor[gray]{.8}	TDI		& 9 &		JTAG\\	
-		TMS		& 10 & 		JTAG 
+	\begin{tabular}{||c|c|c}
+		DIP-rechts	& CPLD-Pin & Funktion\\
+		\rowcolor[gray]{.8}	1		& 15,35 & 3V3/V\textsubscript{INT}\footnotemark[1] \\
+		2		& 26 & 		V\textsubscript{IO}\footnotemark[1]\\
+		\rowcolor[gray]{.8}	3	& 44 & GPIO, GCK2\footnotemark[1]\\
+		4	& 43 & GPIO\footnotemark[1], GCK1\footnotemark[1]\\
+		\rowcolor[gray]{.8}	5	& 42 & GPIO\footnotemark[1]\\
+		6	& 41 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	7	& 40 & GPIO\footnotemark[1]\\
+		8	& 39 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	9	& 38 & GPIO\footnotemark[1]\\
+		10	& 37 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	11	& 36 & GPIO\footnotemark[1], GTS1\footnotemark[1]\\
+		12	& 34 & GPIO\footnotemark[1], GTS2\footnotemark[1]\\
+		\rowcolor[gray]{.8}	13	& 32 & GPIO\footnotemark[1]\\
+		14	& 31 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	15	& 30 & GPIO\footnotemark[1]\\
+		16	& 29 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	17	& 28 & GPIO\footnotemark[1]\\
+		18	& 27 & GPIO\footnotemark[1]\\
+		\rowcolor[gray]{.8}	19		& 9 & TDI\footnotemark[1] JTAG\\	
+		20		& 10 & TMS\footnotemark[1] JTAG
+	\end{tabular}
+\end{minipage}\\
+\begin{minipage}{0.2\textwidth}
+	\begin{tabular}{c|c|c}
+		\rowcolor[gray]{.8} Taster \hphantom{\hspace*{0.38cm}} & \hphantom{\hspace*{0.55cm}} 33 \hphantom{\hspace*{0.5cm}} &  GRS, high active mit hardware debouncing, sonst low active
 	\end{tabular}
 \end{minipage}
-\\\\\\
-CPLD-Pin 33 ist an dem Taster SW1 fest verdrahtet, zudem ist CPLD-Pin 33 auch GRS
-(GRS=Global Reset, GTS=Global Tri-State, GCK=Global Clock).
-%GPIO (General Purpose Input/Output)
 \newpage
 
 
@@ -154,21 +155,21 @@ CPLD-Pin 33 ist an dem Taster SW1 fest verdrahtet, zudem ist CPLD-Pin 33 auch GR
 
 \section{Strom und Spannungsversorgung}
 
-\subsection{Spannungsversorgnung VCC\textsubscript{INT}}
-Wie bei traditionellen ICs auch, befindet sich die Betriebsspannung (VCC\textsubscript{INT}) des BitConnectors oben rechts  in Bezug zu GND (unten links).
+\subsection{Spannungsversorgnung V\textsubscript{ccINT}}
+Wie bei traditionellen ICs auch, befindet sich die Betriebsspannung (V\textsubscript{ccINT}) des BitConnectors oben rechts  in Bezug zu GND (unten links).
 \\\\
 Die Betriebsspannung sollte 3.6V nicht übersteigen und 3V nicht unterschreiten. \autocite[3]{XC95_Spec}
 \\\\
 Es wurde bewusst auf einen Spannungsregler verzichtet, um den zu treibenden Ausgangsstrom nicht zu begrenzen. Diese Entscheidung schafft zwar Flexibilität, verlagert aber die Verantwortung auf eine korrekte Spannungsversorgung auf die externe Peripherie.\\
-An dieser Stelle ist noch erwähnenswert, dass Sie nach \autocite[17]{XC95_maxI} einen „ stromlosen“ I/O-Pin mit einer maximalen Spannung von VCC\textsubscript{INT}+4V treiben dürfen.
+An dieser Stelle ist noch erwähnenswert, dass Sie nach \autocite[17]{XC95_maxI} einen „ stromlosen“ I/O-Pin mit einer maximalen Spannung von V\textsubscript{ccINT}+4V treiben dürfen.
 
-\subsection{Definition der I/O Spannung über VCC\textsubscript{IO}}
+\subsection{Definition der I/O Spannung über V\textsubscript{ccIO}}
 
-Neben der Versorgungsspannung VCC\textsubscript{INT} existiert direkt darunterliegend der Pin VCC\textsubscript{IO}(siehe Kapitel \ref{sec:Pins}), welcher die Höhe der Pin-Ausgangsspannung definiert. Sie können die Spannung der Ausgänge bei einem h-Pegel auf 3,3V oder auf 2,5V setzen. Für eine Ausgangsspannung von 3,3 Volt, sollte VCC\textsubscript{IO} zwischen 3V und 3,6V liegen. Wird dagegen eine Ausgangsspannung von 2,5V forciert, sollte VCC\textsubscript{IO} zwischen 2,3V und 2,7V liegen \autocite[3]{XC95_Spec}
+Neben der Versorgungsspannung V\textsubscript{ccINT} existiert direkt darunterliegend der Pin V\textsubscript{ccIO}(siehe Kapitel \ref{sec:Pins}), welcher die Höhe der Pin-Ausgangsspannung definiert. Sie können die Spannung der Ausgänge bei einem h-Pegel auf 3,3V oder auf 2,5V setzen. Für eine Ausgangsspannung von 3,3 Volt, sollte V\textsubscript{ccIO} zwischen 3V und 3,6V liegen. Wird dagegen eine Ausgangsspannung von 2,5V forciert, sollte V\textsubscript{ccIO} zwischen 2,3V und 2,7V liegen \autocite[3]{XC95_Spec}
 
 \subsection{Ausgangskennlinie eines XC9536XL CPLDs}
 Sobald Sie einen Pin des BitConnectors mit einem Stromfluss belasten, in dem Sie beispielsweise eine LED ansteuern, sackt die Ausgangsspannung des entsprechenden I/O-Pins ab. Dieser Effekt geht auf den verwendeten CPLD zurück. Um nun eine Vorstellung zu erhalten, wie sich der treibende Strom zur Spannung verhält, hat der Autor einige stichpunktartig Messungen durchgeführt. Diese Messwerte sind in Abbildung \ref{fig:out_characteristics} mittels Bezierinterpolation grafisch dargestellt.
-Die Messreihe wurde über ein Fluke 87 III , strom-/spannungsrichtig aufgenommen, VCC\textsubscript{INT} und VCC\textsubscript{IO} betrugen 3,3V, IO33 (CPLD Pin 44) war der (einzige) belastete Ausgang. Obwohl es sich bei der Messung um einen XC9536XL CPLD handelt, ist es naheliegend, dass der XC9572XL eine sehr ähnliche Charakteristik zeigt. Verwunderlich ist, dass die Messreihe teilweise signifikant von der Xilinx-Spezifikation \autocite[6]{XC_Curves} abweicht.  Dennoch wurde in Kapitel \ref{sec:max_I} auf die von Xilinx veröffentlichte Spezifikation zurück gegriffen.
+Die Messreihe wurde über ein Fluke 87 III , strom-/spannungsrichtig aufgenommen, V\textsubscript{ccINT} und V\textsubscript{ccIO} betrugen 3,3V, IO33 (CPLD Pin 44) war der (einzige) belastete Ausgang. Obwohl es sich bei der Messung um einen XC9536XL CPLD handelt, ist es naheliegend, dass der XC9572XL eine sehr ähnliche Charakteristik zeigt. Verwunderlich ist, dass die Messreihe teilweise signifikant von der Xilinx-Spezifikation \autocite[6]{XC_Curves} abweicht.  Dennoch wurde in Kapitel \ref{sec:max_I} auf die von Xilinx veröffentlichte Spezifikation zurück gegriffen.
 
 \newpage
 
