@@ -28,10 +28,10 @@ Example experimental setup:
 
 <img src="doc/Figures/development_environment.png" width="400"/>
 
-- there is a detailed German board [documentation](./BitConnector/doc/Board_Doc_German.pdf)
-- here is the preview for the [schematic](./BitConnector/doc/schematic_v5Xe.pdf)
-- files for board production have also been published in [Gerber](./BitConnector/gerbers/gerbers_v5Xe.zip) format
-- for a revision overview check: [changelog](./BitConnector/changelog.txt)
+- there is a detailed German board [documentation](doc/Board_Doc_German.pdf)
+- here is the preview for the [schematic](doc/schematic_v5Xe.pdf)
+- files for board production have also been published in [Gerber](gerbers/gerbers_v5Xe.zip) format
+- for a revision overview check: [changelog](changelog.txt)
 - for all other questions, study the Kicad project.
 
 |    |           |          |           |            |          |                   |
