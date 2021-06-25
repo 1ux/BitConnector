@@ -8,9 +8,9 @@ Configurations that are present in an HDL/schematic are transmitted via JTAG and
 
 <table><tr>
 <td>   <img alt="BitConnector PCB layout" src="doc/Figures/package_equivalent.png"> </td>
-<td>   <img alt="BitConnector" src="doc/Figures/BitConnector6P.png"> </td>
-<td>   <img alt="BitConnector circuit board" src="doc/Figures/BitConnector v4X_F.png"> </td>
-<td>   <img alt="BitConnector PCB layout" src="doc/Figures/BitConnector v4X_F2.png"> </td>
+<td>   <img alt="BitConnector" src="doc/Figures/BitConnector_Overview"> </td>
+<td>   <img alt="BitConnector circuit board" src="doc/Figures/BitConnector_PCB"> </td>
+<td>   <img alt="BitConnector PCB Copper layer" src="doc/Figures/BitConnector_copper_layer.png"> </td>
 </tr></table>
 
 ## Usage & Documentation
@@ -18,8 +18,8 @@ Configurations that are present in an HDL/schematic are transmitted via JTAG and
 Like every IC the BitConnector needs a clean operating voltage without ripple.
 In practice, the following methods have proven successful:
 
-- Protect the Vcc with 100nf and 10nf capacitors against GND.
-- Keep the VCC and GND connections short and stable.
+- Protect the 3V3 Pin with 100nf and 10nf capacitors against GND.
+- Keep the 3V3 and GND connections short and stable.
 - Avoid long signal and test leads (up to 25 cm) to the inputs during operation.
 - If you have problems with a clean clock on a GCK pin, disable the special globally routed nets as described [here](https://www.xilinx.com/support/documentation/sw_manuals/help/iseguide/mergedProjects/destech/html/cd_using_global_nets.htm).
 
