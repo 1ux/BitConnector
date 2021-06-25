@@ -8,8 +8,8 @@ Configurations that are present in an HDL/schematic are transmitted via JTAG and
 
 <table><tr>
 <td>   <img alt="BitConnector PCB layout" src="doc/Figures/package_equivalent.png"> </td>
-<td>   <img alt="BitConnector" src="doc/Figures/BitConnector_Overview"> </td>
-<td>   <img alt="BitConnector circuit board" src="doc/Figures/BitConnector_PCB"> </td>
+<td>   <img alt="BitConnector" src="doc/Figures/BitConnector_Overview.png"> </td>
+<td>   <img alt="BitConnector circuit board" src="doc/Figures/BitConnector_PCB.png"> </td>
 <td>   <img alt="BitConnector PCB Copper layer" src="doc/Figures/BitConnector_copper_layer.png"> </td>
 </tr></table>
 
