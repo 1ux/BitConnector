@@ -34,34 +34,34 @@ Example experimental setup:
 - for a revision overview check: [changelog](changelog.txt)
 - for all other questions, study the Kicad project.
 
-|    |           |          |           |            |          |                   |
-| :- | :-------: | :------: | :-------- | :--------: | :------: | :---------------- |
-| **No** | **DIP-left**  | **CPLD-Pin** | **comment**   | **DIP-right**  | **CPLD-Pin** | **comment** |
-| 1  |    CLK    |    1     | GCK3      |    3V3     |  15,35   | V<sub>ccINT</sub> |
-| 2  |    IO2    |    2     |           |    VCC     |    26    | V<sub>ccIO</sub>  |
-| 3  |    IO3    |    3     |           |    IO33    |    44    | GCK2              |
-| 4  |    IO4    |    5     |           |    IO32    |    43    | GCK1              |
-| 5  |    IO5    |    6     |           |    IO31    |    42    |                   |
-| 6  |    IO6    |    7     |           |    IO30    |    41    |                   |
-| 7  |    IO7    |    8     |           |    IO29    |    40    |                   |
-| 8  |    IO8    |    12    |           |    IO28    |    39    |                   |
-| 9  |    IO9    |    13    |           |    IO27    |    38    |                   |
-| 10 |   IO10    |    14    |           |    IO26    |    37    |                   |
-| 11 |   IO11    |    16    |           |    IO25    |    36    | GTS1              |
-| 12 |   IO12    |    18    |           |    IO24    |    34    | GTS2              |
-| 13 |   IO13    |    19    |           |    IO23    |    32    |                   |
-| 14 |   IO14    |    20    |           |    IO22    |    31    |                   |
-| 15 |   IO15    |    21    |           |    IO21    |    30    |                   |
-| 16 |   IO16    |    22    |           |    IO20    |    29    |                   |
-| 17 |   IO17    |    23    |           |    IO19    |    28    |                   |
-| 18 |    TCK    |    11    | JTAG      |    IO18    |    27    |                   |
-| 19 |    TDO    |    24    | JTAG      |    TDI     |    9     | JTAG              |
-| 20 |    GND    | 17,25,4  |           |    TMS     |    10    | JTAG              |
+|    |          |           |            |          |                   |
+| :- | :------: | :-------- | :--------: | :------: | :---------------- |
+| **DIP-left**  | **CPLD-Pin** | **function**   | **DIP-right**  | **CPLD-Pin** | **function** |
+| 1  |    1     |GPIO, GCK3|      1      |  15,35   | 3V3/V<sub>ccINT</sub> |
+| 2  |    2     | GPIO     |      2      |    26    | VCC V<sub>ccIO</sub>  |
+| 3  |    3     | GPIO     |      3      |    44    | GPIO, GCK2            |
+| 4  |    5     | GPIO     |      4      |    43    | GPIO, GCK1            |
+| 5  |    6     | GPIO     |      5      |    42    | GPIO                  |
+| 6  |    7     | GPIO     |      6      |    41    | GPIO                  |
+| 7  |    8     | GPIO     |      7      |    40    | GPIO                  |
+| 8  |    12    | GPIO     |      8      |    39    | GPIO                  |
+| 9  |    13    | GPIO     |      9      |    38    | GPIO                  |
+| 10 |    14    | GPIO     |      10     |    37    | GPIO                  |
+| 11 |    16    | GPIO     |      11     |    36    | GPIO, GTS1            |
+| 12 |    18    | GPIO     |      12     |    34    | GPIO, GTS2            |
+| 13 |    19    | GPIO     |      13     |    32    | GPIO                  |
+| 14 |    20    | GPIO     |      14     |    31    | GPIO                  |
+| 15 |    21    | GPIO     |      15     |    30    | GPIO                  |
+| 16 |    22    | GPIO     |      16     |    29    | GPIO                  |
+| 17 |    23    | GPIO     |      17     |    28    | GPIO                  |
+| 18 |    11    | TCK      |      18     |    27    | GPIO                  |
+| 19 |    24    | TDO      |      19     |    9     | TDI                   |
+| 20 |  17,25,4 | GND      |      20     |    10    | TMS                   |                                                      |
 
 Supplements and notes:
 
-- GSR=Global Reset, GTS=Global Tri-State, GCK=Global Clock
-- Pin 33 is connected to the onboard push-button.
+- **GPIO**=General Purpose In/Output, **GRS**=Global Reset, **GTS**=Global Tri-State, **GCK**=Global Clock, **TDI**=Test Data In, **TDO**=Test Data Out, **TCK**=Test Clk, **TMS**=Test Mode Select, V<sub>ccINT</sub>=Supply voltage internal logic, V<sub>ccIO</sub>=Supply voltage output driver
+- Pin 33 is connected to the onboard push-button with GRS.
 - With hardware debouncing, the push-button is high-active, otherwise it is low-active.
 
 ## Build
