@@ -26,7 +26,7 @@ In practice, the following methods have proven successful:
 
 Example experimental setup:
 
-<img src="doc/Figures/development_environment.png" width="400"/>
+<img src="doc/Figures/development_environment.png" width="500"/>
 
 - there is a detailed German board [documentation](doc/Board_Doc_German.pdf)
 - here is the preview for the [schematic](doc/schematic_v5Xe.pdf)
