@@ -8,42 +8,43 @@
 
 #left DIP-side
 
-#NET	CLK			LOC="1";
-#NET	IO3			LOC="3";
-#NET	IO4			LOC="5";
-#NET	IO5        		LOC="6";
-#NET	IO6			LOC="7";
-#NET  	IO7			LOC="8";
-#NET  	IO8			LOC="12";
-#NET  	IO9        		LOC="13";
-#NET  	IO10			LOC="14";
-#NET  	IO11			LOC="16";
-#NET  	IO12			LOC="18";
-#NET  	IO13        		LOC="19";
-#NET  	IO14			LOC="20";
-#NET  	IO15			LOC="21";
-#NET  	IO16			LOC="22";
-#NET  	IO17			LOC="23";
+#NET	GPIO_1GCK3		LOC="1";
+#NET	GPIO_2			LOC="2";
+#NET	GPIO_3			LOC="3";
+#NET	GPIO_5			LOC="5";
+#NET	GPIO_6        		LOC="6";
+#NET	GPIO_7			LOC="7";
+#NET  	GPIO_8			LOC="8";
+#NET  	GPIO_12			LOC="12";
+#NET  	GPIO_13        		LOC="13";
+#NET  	GPIO_14			LOC="14";
+#NET  	GPIO_16			LOC="16";
+#NET  	GPIO_18			LOC="18";
+#NET  	GPIO_19        		LOC="19";
+#NET  	GPIO_20			LOC="20";
+#NET  	GPIO_21			LOC="21";
+#NET  	GPIO_22			LOC="22";
+#NET  	GPIO_23			LOC="23";
 #NET  	TCK			LOC="11";
 #NET  	TDO			LOC="24";
 
 #right DIP-side
-#NET  	IO33			LOC="44";
-#NET  	IO32        		LOC="43";
-#NET  	IO31			LOC="42";
-#NET  	IO30			LOC="41";
-#NET  	IO29        		LOC="40";
-#NET  	IO28			LOC="39";
-#NET  	IO27			LOC="38";
-#NET  	IO26			LOC="37";
-#NET  	IO25        		LOC="36";
-#NET  	IO24			LOC="34";
-#NET  	IO23			LOC="32";
-#NET  	IO22			LOC="31";
-#NET  	IO21        		LOC="30";
-#NET  	IO20			LOC="29";
-#NET	IO19			LOC="28";
-#NET	IO18			LOC="27";
+#NET  	GPIO_44GCK2		LOC="44";
+#NET  	GPIO_43GCK1        	LOC="43";
+#NET  	GPIO_42			LOC="42";
+#NET  	GPIO_41			LOC="41";
+#NET  	GPIO_40        		LOC="40";
+#NET  	GPIO_39			LOC="39";
+#NET  	GPIO_38			LOC="38";
+#NET  	GPIO_37			LOC="37";
+#NET  	GPIO_36GTS1        	LOC="36";
+#NET  	GPIO_34GTS2		LOC="34";
+#NET  	GPIO_32			LOC="32";
+#NET  	GPIO_31			LOC="31";
+#NET  	GPIO_30        		LOC="30";
+#NET  	GPIO_29			LOC="29";
+#NET	GPIO_28			LOC="28";
+#NET	GPIO_27			LOC="27";
 #NET  	TDI			LOC="9";
 #NET  	TMS			LOC="10";
 
