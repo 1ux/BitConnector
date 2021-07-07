@@ -82,7 +82,7 @@ BitConnector Board-Spezifikation
 Absolute, maximale Belastbarkeit:
 \begin{itemize}
 	\item \textit{Versorgungsspannung bezogen auf GND:} \hspace{1cm} -0,5V bis 4V
-	\item \textit{Eingangsspannung bezogen auf GND:} \hspace{1.45cm} -0,5V bis 5,5V
+	\item \textit{IO-Pin Eingangsspannung bezogen auf GND:} \hspace{0.25cm} -0,5V bis 5,5V
 	\item \textit{Max. Stromfluss bei max. 70 \si{\celsius} Chiptemp.}:\hspace{0.6cm} $\approx1,6A$ (siehe Kapitel \ref{sec:max_I})
 \end{itemize}
 
@@ -157,25 +157,40 @@ Es wird empfohlen, Spannungen über und unter 3,3V($\pm 0,3V$) zu vermeiden!
 
 \subsection{Spannungsversorgnung V\textsubscript{ccINT}}
 Wie bei traditionellen ICs auch, befindet sich die Betriebsspannung (V\textsubscript{ccINT}) des BitConnectors oben rechts  in Bezug zu GND (unten links).
+Auf der Platine ist der V\textsubscript{ccINT} Pin mit „3V3“ beschriftet.
 \\\\
-Die Betriebsspannung sollte 3.6V nicht übersteigen und 3V nicht unterschreiten. \autocite[3]{XC95_Spec}
+\fbox{\parbox[c][0.5cm]{12cm}{V\textsubscript{ccINT} sollte 3.6V nicht übersteigen und 3V nicht unterschreiten. \autocite[3]{XC95_Spec}}}
 \\\\
-Es wurde bewusst auf einen Spannungsregler verzichtet, um den zu treibenden Ausgangsstrom nicht zu begrenzen. Diese Entscheidung schafft zwar Flexibilität, verlagert aber die Verantwortung auf eine korrekte Spannungsversorgung auf die externe Peripherie.\\
-An dieser Stelle ist noch erwähnenswert, dass Sie nach \autocite[17]{XC95_maxI} einen „ stromlosen“ I/O-Pin mit einer maximalen Spannung von V\textsubscript{ccINT}+4V treiben dürfen.
+Der BitConnector besitzt aus Gründen der Flexibilität keinen Spannungsregler, es ist daher ratsam die Spezifikationen immer im Auge zu behalten. Ein weitere Fehlerquelle bezüglich {V\textsubscript{ccINT} ist eine unstabilisierten oder unsaubere Spannungsversorgung. In einem solchen Fall wird ein undefiniertes Verhalten bei getakteten/sequenziellen Schaltkreiskonfigurationen zu beobachten sein. 
+
+\begin{figure}[!h]
+	\begin{minipage}[!b]{.43\linewidth} % [b] => Ausrichtung an \caption
+		\includegraphics[width=\linewidth]{Board_Vcc_incorrect}
+		\caption{ungünstige Anbindung an die Versorgungsspannung}
+		\label{fig:VCC_fail}
+	\end{minipage}
+	\hspace{.1\linewidth}% Abstand zwischen Bilder
+	\begin{minipage}[!b]{.45\linewidth} % [b] => Ausrichtung an \caption
+		\includegraphics[width=\linewidth]{Board_Vcc_correct}
+		\caption{empfohlene Anbindung an die Versorgungsspannung}
+		\label{fig:VCC_ok}
+	\end{minipage}
+\end{figure}
+
+Obwohl ich nach der Xilinx Empfehlung \autocite{JTAG_Checklist} Bypass-Kondensatoren für verschiedene Frequenzbereiche auf dem BitConnector vorgesehen habe, um undefiniertem Verhalten vorzubeugen, sollten Sie immer einen zusätzlichen 100nF Kondensator direkt am 3V3 Pin des BitConnectors einsetzen (siehe Abbildung \ref{fig:VCC_ok}). Auch unnötig lange Kabel wie in Abbildung \ref{fig:VCC_fail}) sollten nach Möglichkeit vermieden werden.
+%An dieser Stelle ist noch erwähnenswert, dass Sie nach \autocite[17]{XC95_maxI} einen „ stromlosen“ I/O-Pin mit einer maximalen Spannung von V\textsubscript{ccINT}+4V treiben dürfen.
 
 \subsection{Definition der I/O Spannung über V\textsubscript{ccIO}}
 
-Neben der Versorgungsspannung V\textsubscript{ccINT} existiert direkt darunterliegend der Pin V\textsubscript{ccIO}(siehe Kapitel \ref{sec:Pins}), welcher die Höhe der Pin-Ausgangsspannung definiert. Sie können die Spannung der Ausgänge bei einem h-Pegel auf 3,3V oder auf 2,5V setzen. Für eine Ausgangsspannung von 3,3 Volt, sollte V\textsubscript{ccIO} zwischen 3V und 3,6V liegen. Wird dagegen eine Ausgangsspannung von 2,5V forciert, sollte V\textsubscript{ccIO} zwischen 2,3V und 2,7V liegen \autocite[3]{XC95_Spec}
+Neben der Versorgungsspannung V\textsubscript{ccINT} existiert direkt darunterliegend der Pin V\textsubscript{ccIO}(siehe Kapitel \ref{sec:Pins}), welcher die Höhe der Pin-Ausgangsspannung definiert. Der V\textsubscript{ccIO} Pin ist auf der Platine mit „Vcc“ beschriftet. Sie können die Ausgangsspannung eines Pins in den Bereich zwischen 3,3V bis 2,5V über  V\textsubscript{ccIO} festlegen. Für eine Ausgangsspannung von 3,3 Volt sollte V\textsubscript{ccIO} zwischen 3V und 3,6V liegen. Wird dagegen eine Ausgangsspannung von 2,5V forciert, sollte V\textsubscript{ccIO} zwischen 2,3V und 2,7V liegen, siehe \autocite[3]{XC95_Spec}. Auf diese Weise kann die Ausgangsspannung aller Pins unabhängig von der Versorgungsspannung V\textsubscript{ccINT} eingestellt werden.
 
 \subsection{Ausgangskennlinie eines XC9536XL CPLDs}
-Sobald Sie einen Pin des BitConnectors mit einem Stromfluss belasten, in dem Sie beispielsweise eine LED ansteuern, sackt die Ausgangsspannung des entsprechenden I/O-Pins ab. Dieser Effekt geht auf den verwendeten CPLD zurück. Um nun eine Vorstellung zu erhalten, wie sich der treibende Strom zur Spannung verhält, hat der Autor einige stichpunktartig Messungen durchgeführt. Diese Messwerte sind in Abbildung \ref{fig:out_characteristics} mittels Bezierinterpolation grafisch dargestellt.
+Sobald Sie einen Pin des BitConnectors mit einem Stromfluss belasten, in dem Sie beispielsweise eine LED ansteuern, sackt die Ausgangsspannung des entsprechenden I/O-Pins ab. Dieser Effekt geht auf den verwendeten CPLD zurück. Um nun eine Vorstellung zu erhalten, wie sich der treibende Strom zur Spannung verhält, habe ich einige stichpunktartig Messungen durchgeführt. Diese Messwerte sind in Abbildung \ref{fig:out_characteristics} mittels Bezierinterpolation grafisch dargestellt.
 Die Messreihe wurde über ein Fluke 87 III , strom-/spannungsrichtig aufgenommen, V\textsubscript{ccINT} und V\textsubscript{ccIO} betrugen 3,3V, IO33 (CPLD Pin 44) war der (einzige) belastete Ausgang. Obwohl es sich bei der Messung um einen XC9536XL CPLD handelt, ist es naheliegend, dass der XC9572XL eine sehr ähnliche Charakteristik zeigt. Verwunderlich ist, dass die Messreihe teilweise signifikant von der Xilinx-Spezifikation \autocite[6]{XC_Curves} abweicht.  Dennoch wurde in Kapitel \ref{sec:max_I} auf die von Xilinx veröffentlichte Spezifikation zurück gegriffen.
-
-\newpage
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=1\linewidth]{Figures/XC9536_output_characteristics}
+	\includegraphics[width=0.7\linewidth]{Figures/XC9536_output_characteristics}
 	\caption{Ausgangskennlinie eines XC9536XL}
 	\label{fig:out_characteristics}
 \end{figure}
@@ -190,8 +205,6 @@ Zuerst wird die zu $I_{max}$ zugehörige Verlustleistung $P_d$ über folgende Un
 \begin{center}
 	$T_{jmax} < (\Theta_{JC}*P_d)+T_a$
 \end{center}
-
-\newpage
 
 kurze Variablenbeschreibung:
 
@@ -210,9 +223,10 @@ Ausgehend von diesen Annahmen berechnet sich die Verlustleistung nach \autocite[
 \begin{center}
 	$70 \si{\celsius} = (8.2 \si{\celsius}/W*P_d)+50 \si{\celsius} \Rightarrow$\\
 	$20 \si{\celsius} = (8.2 \si{\celsius}/W*P_d)\Rightarrow$\\
-	$2,439 W = P_d$\\ \vspace{0.5cm}
+	$2,439 W = P_d$\\ %\vspace{0.5cm}
 \end{center}
-	Weiter ist notwendig, die Verlustleistung in $P_d = P_{ddesign} + P_{dIO}$ aufzuschlüsseln.
+
+Weiter ist notwendig, die Verlustleistung in $P_d = P_{ddesign} + P_{dIO}$ aufzuschlüsseln.
 $P_{ddesign}$ repräsentiert hierbei die Leistung ohne eine Last, also die Leistung die der Chip selbst für sich beansprucht, ohne einen Ausgang zu treiben. Dieser Wert sollte gemessen werden und lautet für den BitConnector rund 40mW. Wird dieser Wert aus Sicherheitsgründen verdoppelt, ist von rund 80mW auszugehen.\\\\
 Somit gilt: 
 \begin{center}
@@ -232,8 +246,10 @@ Daraus folgt:
 	$I_{max} * (3,3V - 1,85V) = 2,439 W - 0.08W \rightarrow$\\
 	\underline{\underline{$I_{max}\approx 1,63A $}}
 \end{center}
-Der Wert $I_{max}$ sagt aus, dass bei einer I/O-Spannung von 1,85V und einer Stromstärke von 30mA pro Ausgang, eine Gesamtstromstärke von 1,63A erreicht wird. Hierbei liegt die Chiptemperatur $\leq $ der als kritisch angenommenen 70$\si{\celsius}$. Auffällig ist, dass die 1,63A in dieser Konstellation im Bitconnector nie erreicht werden können, da dieser nur 34 mögliche Ausgänge bietet. Mit den getroffenen Annahmen ist jedoch die Versorgung von $\frac{1,63A}{0,03}\approx54$ Ausgänge möglich.\\\\
+Der Wert $I_{max}$ sagt aus, dass bei einer I/O-Spannung von 1,85V und einer Stromstärke von 30mA pro Ausgang, eine Gesamtstromstärke von 1,63A erreicht wird. Hierbei liegt die Chiptemperatur $\leq $ der als kritisch angenommenen 70$\si{\celsius}$. Auffällig ist, dass die 1,63A in dieser Konstellation im Bitconnector nie erreicht werden können, da dieser nur 34 mögliche Ausgänge bietet. Mit den getroffenen Annahmen ist jedoch die Versorgung von $\frac{1,63A}{0,03A}\approx54$ Ausgänge möglich.\\\\
 Bitte verlassen Sie sich nicht auf die angegebene Berechnung und überprüfen Sie auch die Quellen. Sollten Sie einen Fehler finden, wäre ich Ihnen sehr dankbar, wenn Sie mich diesbezüglich kontaktieren.
+
+\newpage
 
 \section{Hardware Entprellung}
 Gelegentlich ist es sehr hilfreich, eine getaktete, sequenzielle Schaltung schrittweise über das Drücken eines Taster zu durchlaufen. Leider erzeugen so ziemlich alle handelsüblichen Taster ein sogenanntes „Prellen“, da die Kontakte des Tasters nicht sauber schließen oder öffnen. Ein solches Prellen führt zu einer unvorhersagbaren Abfolge von Signalimpulsen. Schauen Sie sich hierfür einmal die Abbildung \ref{fig:prellen_1} genauer an. 
@@ -254,7 +270,7 @@ Hier wird ein einfacher Tastendruck über ein Oszillogramm grafisch veranschauli
 	\label{fig:prellen_2}
 \end{figure}
 
-Sie erkennen deutlich, dass der Signalpegel in Abbildung \ref{fig:prellen_2} bereits bei ungefähr 2 Millisekunden hin und herspringt und somit mehrere Flanken erzeugt. Diese Signalflanken sind gerade bei sequenziellen Schaltungen, die auf fallende oder steigende Flanken reagieren problematisch. Eine einfache Zählerschaltung, die mit jedem Tastendruck „1“ hinzu addiert, wird augenscheinlich nicht funktionieren. So scheint es, als würde der Zähler einzelne Zählschritte beim Drücken oder beim Loslassen des Tasters überspringen. Mit einem höherwertigen Oszilloskop ließe sich der problematische Bereich noch näher untersuchen, was weitere Taktwechsel und somit weitere Zählimpulse mit nur einem Tastendruck aufdecken könnte. 
+Es ist erkennbar, dass der Signalpegel in Abbildung \ref{fig:prellen_2} bereits bei ungefähr 2 Millisekunden hin und herspringt und somit mehrere Flanken erzeugt. Diese Signalflanken sind bei sogenannten sequenziellen Schaltungen, die auf fallende oder steigende Flanken reagieren, problematisch. Eine einfache Zählerschaltung, die mit jedem Tastendruck „1“ hinzu addiert, wird augenscheinlich nicht funktionieren. So scheint es, als würde der Zähler einzelne Zählschritte beim Drücken oder Loslassen des Tasters überspringen. Mit einem höherwertigen Oszilloskop ließe sich der problematische Bereich noch näher untersuchen, was weitere Taktwechsel und somit weitere Zählimpulse mit nur einem Tastendruck aufdecken könnte. 
 Da Sie bei CPLDs prinzipiell mit Ihren Flip-Flop-Ressourcen sehr haushalten müssen und keinen Mikrocontroller für eine Entprellroutine haben, wurde für den BitConnector eine Hardwareentprellung vorgesehen. 
 
 \newpage
@@ -270,6 +286,7 @@ Sollte Ihr BitConnector mit dem 74LVC2G14 IC bestückt sein, so ist auch der Tas
 \end{figure}
 
 Sollte dies nicht der Fall sein, so können Sie auf Grundlage der nachfolgenden Erläuterungen eine eigene Hardwareentprellung nachschalten.
+
 \subsection{Prinzip der Hardwareentprellung}
 Da die vom Menschen erzeugten Frequenzen der Tastendrücke im Vergleich zum Prellen des Tasters sehr niedrig sind, ist es naheliegend einen Tiefpassfilter in Form eines RC-Gliedes dem Taster vorzuschalten. 
 Dieser Tiefpass filtert die hochfrequenten Anteile des Prellens aus dem Tastendruck heraus. Das Prellen ist verschwunden. Es entsteht allerdings ein neues Problem. Da ein RC-Glied naturgemäß aus einem Widerstand und einem Kondensator besteht, durchläuft dieser Kondensator eine Ladespannung, die dem natürlichen Logarithmus sehr nahe kommt \autocite{RC}. Eine digitale Schaltung auf CMOS-Basis benötigt jedoch eine steile Signalflanke, also beispielsweise einen Signalwechsel von 0V auf direkt 3,3V. Andernfalls besteht die Gefahr, dass die Schaltung eine gewisse Zeit einen undefinierten Zustand annimmt. Auf Transistorebene kann dieser undefinierte Zustand gefährlich sein, da eine Transistorkonstellation, die es theoretisch so nicht geben sollte, plötzlich anfangen kann, den Strom zu leiten. Zudem werden Sie immer noch keine Freude beim auswerten des Tastenimpuls haben. Es ist daher nachdrücklich anzuraten, diese undefinierten Signalzustände in digitalen Schaltungen zu vermeiden. Dies geschieht hier mit Hilfe eines Schmitt-Triggers. Der Schmitt-Trigger soll verkürzt dargestellt, den undefinierten Spannungsbereich vor dem digitalen Eingang einer Schaltung über eine sogenannte „charakteristische Hysterese“ vermeiden. Sie können sich den Schmitt-Trigger in diesem Fall als den „eigentlichen Schalter“ vorstellen, der an seinem Ausgang immer einen steilen Pegel schaltet, während er am Eingang eine Kondenstorkennlinie „sieht“.
@@ -278,7 +295,7 @@ Dieser Tiefpass filtert die hochfrequenten Anteile des Prellens aus dem Tastendr
 
 \section{Entwicklungsumgebung}
 
-Momentan gibt es noch keine vollumfängliche und freie \autocite{FSF} Entwicklungsumgebung für Xilinx CPLDs, weswegen der Autor auf proprietäre Software der Firma Xilinx zurückgreifen muss.
+Momentan gibt es noch keine vollumfängliche und freie \autocite{FSF} Entwicklungsumgebung für Xilinx CPLDs, weshalb ich auf proprietäre Software der Firma Xilinx zurückgreifen muss.
 Fraglicherweise bietet Xilinx in seiner aktuellen Entwicklungsumgebung „Vivado“ keine Unterstützung für CPLDs an, siehe \autocite[17]{Vivado}. Dennoch ist es möglich, mit der älteren Design Suite „ISE“, Xilinx CPLDs problemlos zu konfigurieren.
 Mit einer Registrierung bei Xilinx erhalten Sie eine kostenlose Lizenz, mit derer Sie die ISE-Demo-Version auf eine Webpack-Version \autocite{ISE-Web} freischalten können. Diese Lizenz ist ausreichend, um alle CPLDs der XC9500 Serie ohne Einschränkungen zu konfigurieren.
 
@@ -382,7 +399,7 @@ Um mit diesem Mikrocontroller kommunizieren zu können, wird weiter eine PC-Soft
 \end{figure}
 
 Um aber auf die offenen Alternativen hinzuweisen, soll hier die Lib(X)SVF von Clifford Wolf\autocite{LibXSVF} Erwähnung finden. Lib(X)SVF ist eine C-Bibliothek zur Implementierung/Umsetzung von JTAG-Programmiergeräten mittels XSVF/SVF Format. Eine konkrete Implementierung ist beispielsweise das „clujtag“ Projekt, wobei clujtag \autocite{clujtag} die Firmware eines einfachen AVR basierten Programmiergeräts bildet und clujtag-client \autocite{clujtag-client} eine kommandozeilenbasierte Alternative zu Xilnix iMPACT darstellt.
-In welchen Umfang diese und andere Projekte heute tragfähig sind, kann der Autor bisher nicht einschätzen.
+In welchen Umfang diese und andere Projekte heute tragfähig sind, kann ich bisher nicht einschätzen.
 
 
 \newpage
