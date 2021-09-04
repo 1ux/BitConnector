@@ -21,7 +21,7 @@ In practice, the following methods have proven successful:
 - Protect the 3V3 Pin with 100nf and 10nf capacitors against GND.
 - Keep the 3V3 and GND connections short and stable.
 - Avoid long signal and test leads (up to 25 cm) to the inputs during operation.
-- If you have problems with a clean clock on a GCK pin, disable the special globally routed nets as described [here](https://www.xilinx.com/support/documentation/sw_manuals/help/iseguide/mergedProjects/destech/html/cd_using_global_nets.htm).
+- If you have problems with a clean clock on a GCK pin, disable the special globally routed nets as described [here](https://web.archive.org/web/20210309172427/https://www.xilinx.com/support/documentation/sw_manuals/help/iseguide/mergedProjects/destech/html/cd_using_global_nets.htm).
 
 
 Example experimental setup:
