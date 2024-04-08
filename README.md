@@ -21,14 +21,15 @@ In practice, the following methods have proven successful:
 - Protect the 3V3 Pin with 100nf and 10nf capacitors against GND.
 - Keep the 3V3 and GND connections short and stable.
 - Avoid long signal and test leads (up to 25 cm) to the inputs during operation.
-- If you have problems with a clean clock on a GCK pin, disable the special globally routed nets as described [here](https://web.archive.org/web/20210309172427/https://www.xilinx.com/support/documentation/sw_manuals/help/iseguide/mergedProjects/destech/html/cd_using_global_nets.htm).
+- If you are having trouble getting a clean clock input, set „implementation template“ to „optimize density“ in Process Properties/Fitting
+  or disable the special globally routed nets as described [here](https://web.archive.org/web/20210309172427/https://www.xilinx.com/support/documentation/sw_manuals/help/iseguide/mergedProjects/destech/html/cd_using_global_nets.htm)
 
 
 Example experimental setup:
 
 <img src="doc/Figures/development_environment.png" width="500"/>
 
-- there is a detailed German board [documentation](doc/Board_Doc_German.pdf)
+- there is a detailed German board [documentation](doc/Board_Doc_German.pdf) :de:
 - here is the preview for the [schematic](doc/schematic_v5Xe.pdf)
 - files for board production have also been published in [Gerber](gerbers/gerbers_v5Xe.zip) format
 - for a revision overview check: [changelog](changelog.txt)
